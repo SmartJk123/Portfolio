@@ -44,8 +44,8 @@ Prepros Export/
 *.log
 logs/
 
-# Large media files
-*.mp4
+# Large media files (but allow compressed videos)
+# *.mp4
 *.avi
 *.mov
 *.mkv
