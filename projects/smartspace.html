@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartSpace Platform | Joy Kamau Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --indigo-dark: #1e1b4b;
+            --royal-blue: #2563eb;
+            --gold: #fbbf24;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #050505;
+            color: #f8fafc;
+        }
+        .bg-indigo-gradient {
+            background: radial-gradient(circle at 10% 10%, #1e1b4b 0%, #050505 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .skill-tag {
+            background: rgba(37, 99, 235, 0.1);
+            border: 1px solid rgba(37, 99, 235, 0.2);
+            transition: all 0.3s ease;
+        }
+        .skill-tag:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            transform: translateY(-2px);
+        }
+        .profile-ring {
+            position: relative;
+            padding: 12px;
+        }
+        .profile-ring::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 2px dashed var(--gold);
+            border-radius: 9999px;
+            animation: rotate 25s linear infinite;
+        }
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        
+        /* Slider styles */
+        .slider-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+        .slider-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .slider-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            cursor: pointer;
+        }
+        .slider-dot.active {
+            background: var(--gold);
+        }
+    </style>
+</head>
+<body class="antialiased bg-indigo-gradient">
+    
+    <header class="fixed w-full top-0 z-50 border-b border-white/5 bg-black/80 backdrop-blur-md">
+        <nav class="container mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="../index.html" class="text-2xl font-extrabold tracking-tighter text-white">JOY<span class="text-gold">.</span></a>
+            <div class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest text-gray-400">
+                <a href="#demo" class="hover:text-amber-400 transition-colors">Demo</a>
+                <a href="#features" class="hover:text-amber-400 transition-colors">Features</a>
+                <a href="#gallery" class="hover:text-amber-400 transition-colors">Gallery</a>
+                <a href="#process" class="hover:text-amber-400 transition-colors">Process</a>
+            </div>
+            <a href="mailto:joykamau123@gmail.com" class="bg-amber-400 text-black px-6 py-2 rounded-lg text-xs font-black uppercase">Hire Me</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="min-h-screen flex items-center pt-28 pb-12">
+            <div class="container mx-auto px-6">
+                <div class="space-y-6 text-center">
+                    <span class="text-blue-500 font-bold tracking-widest uppercase text-sm">Project Detail</span>
+                    <h1 class="text-5xl font-black text-white leading-[0.9] tracking-tighter">
+                        SmartSpace Residentials<br/>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-amber-400">Property Dashboard</span>
+                    </h1>
+                    <p class="text-gray-400 text-lg max-w-xl leading-relaxed">
+                        A comprehensive residential property management dashboard with real-time analytics, 
+                        tenant management, maintenance tracking, and secure audit trails.
+                    </p>
+                    <div class="flex flex-wrap gap-4 justify-center pt-6">
+                        <a href="#demo" class="bg-white text-black px-8 py-4 rounded-full font-bold hover:bg-amber-400 transition-colors inline-block">
+                            View Demo Dashboard
+                        </a>
+                        <a href="#contact" class="bg-white/10 backdrop-blur-sm border border-white/30 text-white px-8 py-4 rounded-full font-bold hover:bg-white/20 transition-all">
+                            Enquire More
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Demo Dashboard Section -->
+        <section id="demo" class="py-24">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-black uppercase tracking-tighter mb-2">Interactive Dashboard</h2>
+                <p class="text-gray-400 mb-12 max-w-2xl">Full-featured property management interface with real-time data, click the demo button to launch the live dashboard.</p>
+                
+                <div class="glass-card rounded-2xl p-6">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-xl flex items-center justify-center">
+                                <i data-lucide="building" class="text-white w-5 h-5"></i>
+                            </div>
+                            <h3 class="font-bold text-xl">SmartSpaces Dashboard</h3>
+                        </div>
+                        <a href="/dashboard" class="bg-amber-400 text-black px-6 py-2 rounded-lg text-xs font-black uppercase hover:bg-amber-500 transition">
+                            Launch Demo →
+                        </a>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                        <div class="bg-white/5 rounded-xl p-4">
+                            <p class="text-2xl font-bold text-amber-400">12</p>
+                            <p class="text-xs text-gray-500">Total Properties</p>
+                        </div>
+                        <div class="bg-white/5 rounded-xl p-4">
+                            <p class="text-2xl font-bold text-blue-400">48</p>
+                            <p class="text-xs text-gray-500">Active Tenants</p>
+                        </div>
+                        <div class="bg-white/5 rounded-xl p-4">
+                            <p class="text-2xl font-bold text-emerald-400">KES 2.4M</p>
+                            <p class="text-xs text-gray-500">Monthly Revenue</p>
+                        </div>
+                        <div class="bg-white/5 rounded-xl p-4">
+                            <p class="text-2xl font-bold text-red-400">7</p>
+                            <p class="text-xs text-gray-500">Open Tickets</p>
+                        </div>
+                    </div>
+                    
+                    <div class="aspect-video bg-gradient-to-br from-indigo-900/50 to-purple-900/50 rounded-xl overflow-hidden relative group">
+                        <!-- Video element covering the container container safely -->
+                        <video 
+                            src="residentials.mp4" 
+                            autoplay 
+                            loop 
+                            muted 
+                            playsinline 
+                            class="w-full h-full object-cover">
+                        </video>
+                        
+                        <!-- Subtle dark overlay to keep text readable, which fades on hover -->
+                        <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex flex-col justify-end p-6">
+                            <p class="text-white font-bold text-lg drop-shadow-md">Live Interactive Dashboard</p>
+                            <p class="text-xs text-gray-300 mt-1 drop-shadow-md">Click "Launch Demo" to access the full dashboard</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="py-24">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-black uppercase tracking-tighter mb-12">Key Features</h2>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="glass-card rounded-xl p-6">
+                        <i data-lucide="shield" class="w-8 h-8 text-amber-400 mb-4"></i>
+                        <h3 class="font-bold text-lg mb-2">Audit Trail</h3>
+                        <p class="text-xs text-gray-400">Complete activity logging for all system changes - visible to admins only.</p>
+                    </div>
+                    <div class="glass-card rounded-xl p-6">
+                        <i data-lucide="users" class="w-8 h-8 text-amber-400 mb-4"></i>
+                        <h3 class="font-bold text-lg mb-2">Role-Based Access</h3>
+                        <p class="text-xs text-gray-400">Admin, Accountant, Manager, Secretary, Staff permissions with granular control.</p>
+                    </div>
+                    <div class="glass-card rounded-xl p-6">
+                        <i data-lucide="dollar-sign" class="w-8 h-8 text-amber-400 mb-4"></i>
+                        <h3 class="font-bold text-lg mb-2">Payment Processing</h3>
+                        <p class="text-xs text-gray-400">M-Pesa integration, payment reconciliation, and automated invoicing.</p>
+                    </div>
+                    <div class="glass-card rounded-xl p-6">
+                        <i data-lucide="wrench" class="w-8 h-8 text-amber-400 mb-4"></i>
+                        <h3 class="font-bold text-lg mb-2">Maintenance Tracker</h3>
+                        <p class="text-xs text-gray-400">Submit, assign, and resolve maintenance requests with real-time updates.</p>
+                    </div>
+                    <div class="glass-card rounded-xl p-6">
+                        <i data-lucide="bar-chart-3" class="w-8 h-8 text-amber-400 mb-4"></i>
+                        <h3 class="font-bold text-lg mb-2">Real-Time Analytics</h3>
+                        <p class="text-xs text-gray-400">Live revenue charts, occupancy rates, and financial reporting.</p>
+                    </div>
+                    <div class="glass-card rounded-xl p-6">
+                        <i data-lucide="message-square" class="w-8 h-8 text-amber-400 mb-4"></i>
+                        <h3 class="font-bold text-lg mb-2">Communication Hub</h3>
+                        <p class="text-xs text-gray-400">SMS, email notifications, announcements, and tenant messaging.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="py-24 bg-white/[0.02]">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-black uppercase tracking-tighter mb-2">Dashboard Gallery</h2>
+                <p class="text-gray-400 mb-12 max-w-2xl">Screenshots of the SmartSpace Residentials dashboard in action.</p>
+                
+                <!-- Slider Container -->
+                <div class="slider-container relative bg-black/30 rounded-2xl p-4 overflow-hidden">
+                    <!-- Track Layer -->
+                    <div id="sliderTrack" class="flex w-full transition-transform duration-500 ease-in-out">
+                        
+                        <!-- Slide 1 -->
+                        <div class="w-full flex-shrink-0">
+                            <img src="./images/1.png" alt="Dashboard Overview" class="w-full h-auto rounded-xl object-cover mx-auto" onerror="this.src='https://placehold.co'">
+                        </div>
+                        
+                        <!-- Slide 2 -->
+                        <div class="w-full flex-shrink-0">
+                            <img src="./images/2.png" alt="Properties Management" class="w-full h-auto rounded-xl object-cover mx-auto" onerror="this.src='https://placehold.co'">
+                        </div>
+                        
+                        <!-- Slide 3 -->
+                        <div class="w-full flex-shrink-0">
+                            <img src="./images/3.png" alt="Tenants Portal" class="w-full h-auto rounded-xl object-cover mx-auto" onerror="this.src='https://placehold.co'">
+                        </div>
+
+                        <!-- Slide 4 -->
+                        <div class="w-full flex-shrink-0">
+                            <img src="./images/4.png" alt="Payment Screen" class="w-full h-auto rounded-xl object-cover mx-auto" onerror="this.src='https://placehold.co'">
+                        </div>
+
+                        <!-- Slide 5 -->
+                        <div class="w-full flex-shrink-0">
+                            <img src="./images/5.png" alt="Slide 5" class="w-full h-auto rounded-xl object-cover mx-auto" onerror="this.src='https://placehold.co'">
+                        </div>
+
+                        <!-- Slide 6 -->
+                        <div class="w-full flex-shrink-0">
+                            <img src="./images/6.png" alt="Slide 6" class="w-full h-auto rounded-xl object-cover mx-auto" onerror="this.src='https://placehold.co'">
+                        </div>
+
+                        <!-- Slide 7 -->
+                        <div class="w-full flex-shrink-0">
+                            <img src="./images/7.png" alt="Slide 7" class="w-full h-auto rounded-xl object-cover mx-auto" onerror="this.src='https://placehold.co'">
+                        </div>
+
+                        <!-- Slide 8 -->
+                        <div class="w-full flex-shrink-0">
+                            <img src="./images/8.png" alt="Slide 8" class="w-full h-auto rounded-xl object-cover mx-auto" onerror="this.src='https://placehold.co'">
+                        </div>
+                    </div>
+                    
+                    <!-- Navigation Arrows (Using explicit HTML characters if Lucide fails to initialize) -->
+                    <button onclick="moveSlide(-1)" class="absolute left-6 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white w-10 h-10 rounded-full flex items-center justify-center transition-all z-10 cursor-pointer text-xl font-bold select-none">
+                        &#10216;
+                    </button>
+                    <button onclick="moveSlide(1)" class="absolute right-6 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white w-10 h-10 rounded-full flex items-center justify-center transition-all z-10 cursor-pointer text-xl font-bold select-none">
+                        &#10217;
+                    </button>
+                    
+                    <!-- Dots Container -->
+                    <div id="dotsContainer" class="flex justify-center gap-2 mt-4">
+                        <button class="slider-dot w-2 h-2 rounded-full bg-white/20 hover:bg-white/50 transition-all cursor-pointer" onclick="goToSlide(0)"></button>
+                        <button class="slider-dot w-2 h-2 rounded-full bg-white/20 hover:bg-white/50 transition-all cursor-pointer" onclick="goToSlide(1)"></button>
+                        <button class="slider-dot w-2 h-2 rounded-full bg-white/20 hover:bg-white/50 transition-all cursor-pointer" onclick="goToSlide(2)"></button>
+                        <button class="slider-dot w-2 h-2 rounded-full bg-white/20 hover:bg-white/50 transition-all cursor-pointer" onclick="goToSlide(3)"></button>
+                        <button class="slider-dot w-2 h-2 rounded-full bg-white/20 hover:bg-white/50 transition-all cursor-pointer" onclick="goToSlide(4)"></button>
+                        <button class="slider-dot w-2 h-2 rounded-full bg-white/20 hover:bg-white/50 transition-all cursor-pointer" onclick="goToSlide(5)"></button>
+                        <button class="slider-dot w-2 h-2 rounded-full bg-white/20 hover:bg-white/50 transition-all cursor-pointer" onclick="goToSlide(6)"></button>
+                        <button class="slider-dot w-2 h-2 rounded-full bg-white/20 hover:bg-white/50 transition-all cursor-pointer" onclick="goToSlide(7)"></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Development Process -->
+        <section id="process" class="py-24">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-black mb-12 uppercase tracking-tighter">Development Process</h2>
+                <div class="grid md:grid-cols-3 gap-8 text-center">
+                    <div class="p-6 glass-card rounded-xl">
+                        <i data-lucide="layout" class="mx-auto text-amber-400 mb-4 w-10 h-10"></i>
+                        <h3 class="font-bold text-lg mb-2">Architecture</h3>
+                        <p class="text-xs text-gray-500">Modern React + Vite frontend with Supabase backend</p>
+                    </div>
+                    <div class="p-6 glass-card rounded-xl">
+                        <i data-lucide="code-2" class="mx-auto text-blue-500 mb-4 w-10 h-10"></i>
+                        <h3 class="font-bold text-lg mb-2">Development</h3>
+                        <p class="text-xs text-gray-500">Component-based design with real-time data integration</p>
+                    </div>
+                    <div class="p-6 glass-card rounded-xl">
+                        <i data-lucide="check-circle" class="mx-auto text-emerald-500 mb-4 w-10 h-10"></i>
+                        <h3 class="font-bold text-lg mb-2">Results</h3>
+                        <p class="text-xs text-gray-500">Streamlined property management with audit-grade security</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="py-24 bg-white/[0.02]">
+            <div class="container mx-auto px-6 text-center max-w-2xl">
+                <h2 class="text-3xl font-black mb-6 uppercase tracking-tighter">Want to Know More?</h2>
+                <p class="text-gray-400 mb-8">This SmartSpace Residentials project demonstrates advanced property management capabilities including role-based permissions, real-time analytics, and secure audit trails. Let's discuss how I can help build similar solutions.</p>
+                <a href="mailto:joykamau123@gmail.com?subject=SmartSpace%20Dashboard%20Enquiry" class="bg-amber-400 text-black px-8 py-3 rounded-lg font-bold uppercase inline-block hover:bg-amber-500 transition">
+                    Get In Touch
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-12 border-t border-white/5 text-center text-[10px] text-gray-700 uppercase tracking-widest">
+        &copy; 2026 Joy Kamau. All rights reserved.
+    </footer>
+
+    <script>
+        let currentSlide = 0;
+        const totalSlides = 8;
+
+        function updateSlider() {
+            const track = document.getElementById('sliderTrack');
+            if (!track) return;
+            
+            // Shift track container position
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // Manage dot highlighting status states
+            const dots = document.querySelectorAll('#dotsContainer .slider-dot');
+            dots.forEach((dot, index) => {
+                if (index === currentSlide) {
+                    dot.style.backgroundColor = '#ffffff';
+                    dot.style.width = '1rem';
+                } else {
+                    dot.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
+                    dot.style.width = '0.5rem';
+                }
+            });
+        }
+
+        function moveSlide(direction) {
+            currentSlide += direction;
+            if (currentSlide >= totalSlides) currentSlide = 0;
+            if (currentSlide < 0) currentSlide = totalSlides - 1;
+            updateSlider();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlider();
+        }
+
+        // Fire initial setup calculation layout on view mount
+        document.addEventListener('DOMContentLoaded', () => {
+            updateSlider();
+        });
+    </script>
+</body>
+</html>

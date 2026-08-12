@@ -1,240 +1,1779 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-<head>
+    <head>
+ 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joy Kamau | Developer Portfolio</title>
+    <title>Joy Kamau | Software Developer and Designer</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <style>
+        :root {
+            --indigo-dark: #1e1b4b;
+            --indigo-mid: #312e81;
+            --royal-blue: #2563eb;
+            --gold: #fbbf24;
+            --gold-soft: #fde68a;
+            --background-dark: #0f0e1a;
+            --background-darker: #080714;
+            --text-primary: #e0dff8;
+            --text-secondary: rgba(224, 223, 248, 0.72);
+            --text-muted: rgba(224, 223, 248, 0.48);
+            --text-white: #ffffff;
+            --text-gold: #fbbf24;
+            --text-dark: #0f0e1a;
+            --text-light: rgba(255, 255, 255, 0.78);
+            --text-lighter: rgba(255, 255, 255, 0.95);
+            --border-light: rgba(251, 191, 36, 0.18);
+            --border-medium: rgba(55, 31, 153, 0.35);
+            --glass-bg: rgba(30, 27, 75, 0.45);
+            --glass-border: rgba(251, 191, 36, 0.22);
+            --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.55), 0 1px 2px 0 rgba(0, 0, 0, 0.35);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.55), 0 2px 4px -1px rgba(0, 0, 0, 0.35);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.55), 0 4px 6px -2px rgba(0, 0, 0, 0.35);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.55), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+            --transition-default: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-fast: all 0.2s ease-out;
+            --transition-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0a0a0a;
-            color: #ededed;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--background-dark);
+            color: var(--text-lighter);
+            line-height: 1.7;
         }
-        .nav-link-active {
-            color: #2dd4bf !important;
+        
+        /* ── GLOBAL DARK SECTIONS ── */
+        .section-bg {
+            background: var(--background-darker);
         }
-        .text-glow {
-            text-shadow: 0 0 8px rgba(45, 212, 191, 0.5);
+
+        /* ══════════════════════════════════════
+           IMAGE BANNERS (full-viewport-width background images
+           with dark gradient overlay + parallax scroll)
+        ══════════════════════════════════════ */
+        .section-banner {
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
-        /* Custom scrollbar for a sleek look */
-        ::-webkit-scrollbar {
-            width: 8px;
+        .section-banner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(135deg,
+                    rgba(15, 14, 26, 0.90) 0%,
+                    rgba(30, 27, 75, 0.78) 50%,
+                    rgba(15, 14, 26, 0.90) 100%);
+            z-index: 0;
         }
-        ::-webkit-scrollbar-track {
-            background: #171717;
+        .section-banner::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 140px;
+            background: linear-gradient(to top, var(--background-darker), transparent);
+            z-index: 1;
+            pointer-events: none;
         }
-        ::-webkit-scrollbar-thumb {
-            background: #2dd4bf;
-            border-radius: 10px;
+        /* inner content sits above the dark overlay */
+        .section-banner > .container {
+            position: relative;
+            z-index: 2;
         }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #5eead4;
+
+        /* ── HERO GRADIENT ── */
+        .bg-indigo-gradient {
+            background:
+                radial-gradient(circle at 25% 20%, var(--indigo-dark) 0%, var(--indigo-mid) 45%, var(--background-darker) 80%, var(--text-dark) 100%);
+        }
+        
+        /* ── HERO WITH IMAGE OVERLAY ── */
+        .hero-image-bg {
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .hero-image-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(135deg,
+                    rgba(15, 14, 26, 0.88) 0%,
+                    rgba(30, 27, 75, 0.60) 55%,
+                    rgba(15, 14, 26, 0.88) 100%);
+            z-index: 0;
+        }
+        .hero-image-bg > .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* ── PARALLAX LAYER ── */
+        .parallax-layer {
+            will-change: transform;
+        }
+        
+        /* ══════════════════════════════════════
+           IMAGE BANNER — HORIZONTAL STRIP
+           (services / divider between sections)
+        ══════════════════════════════════════ */
+        .image-strip {
+            position: relative;
+            min-height: 260px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            overflow: hidden;
+        }
+        .image-strip::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(15,14,26,0.91) 0%, rgba(30,27,75,0.76) 50%, rgba(15,14,26,0.91) 100%);
+            z-index: 0;
+        }
+        .image-strip-inner {
+            position: relative;
+            z-index: 1;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .image-strip-gold-line {
+            position: absolute;
+            bottom: 0;
+            left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(to right, transparent 5%, var(--gold) 30%, var(--royal-blue) 70%, transparent 95%);
+        }
+        
+/* ══════════════════════════════════════
+            REVEAL ANIMATIONS — reveal/hide on scroll
+            with a standalone IntersectionObserver
+            that fires per element rather than a one-shot class
+            so the observer lifecycle never deadlocks
+         ══════════════════════════════════════ */
+         section {
+             opacity: 1 !important;
+             transform: translateY(0) !important;
+         }
+         .project-card,
+         .glass-card-hover,
+         .glass-card,
+         .icon-bg,
+         .skill-tag {
+             will-change: opacity, transform;
+         }
+         
+         .glass-card-hover {
+             transition: var(--transition-default);
+         }
+        
+        .glass-card-hover:hover {
+            background: rgba(30, 27, 75, 0.62);
+            backdrop-filter: blur(26px);
+            -webkit-backdrop-filter: blur(26px);
+            border-color: var(--gold);
+            box-shadow: 0 12px 40px 0 rgba(251, 191, 36, 0.15), 0 4px 12px rgba(49, 46, 129, 0.55);
+            transform: translateY(-4px);
+        }
+        
+        .skill-tag {
+            background: rgba(49, 46, 129, 0.35);
+            border: 1px solid rgba(251, 191, 36, 0.25);
+            color: var(--text-lighter);
+            transition: var(--transition-default);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-tag:hover {
+            border-color: var(--gold);
+            background: rgba(251, 191, 36, 0.14);
+            color: var(--gold);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 18px 0 rgba(251, 191, 36, 0.22),
+                        0 0 30px rgba(251, 191, 36, 0.08);
+        }
+        
+        .skill-tag::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(251, 191, 36, 0.22), transparent);
+            transition: var(--transition-default);
+        }
+        
+        .skill-tag:hover::before {
+            left: 100%;
+        }
+
+        /* A stronger filled treatment for the primary programming-language skills. */
+        .programming-languages-card {
+            background: linear-gradient(135deg, rgba(49, 46, 129, 0.78), rgba(30, 27, 75, 0.88));
+            border: 1px solid rgba(251, 191, 36, 0.38);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 12px 32px rgba(8, 7, 20, 0.28);
+        }
+
+        .programming-languages-card .skill-tag {
+            background: rgba(251, 191, 36, 0.16);
+            border-color: rgba(251, 191, 36, 0.46);
+            color: #fff7dd;
+        }
+
+        .live-view-button {
+            background: var(--gold);
+            color: var(--text-dark);
+            border: 1px solid var(--gold-soft);
+            box-shadow: 0 4px 15px rgba(251, 191, 36, 0.16);
+        }
+
+        .project-card:hover .live-view-button {
+            background: #fcd34d;
+            transform: translateX(2px);
+            box-shadow: 0 6px 20px rgba(251, 191, 36, 0.28);
+        }
+        
+        /* ── LUXURY CARD SHINE ON HOVER ── */
+        .luxury-card {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .luxury-card::after {
+            content: '';
+            position: absolute;
+            top: -60%;
+            left: -60%;
+            width: 60%;
+            height: 200%;
+            background: linear-gradient(
+                135deg,
+                rgba(251, 191, 36, 0.08) 0%,
+                transparent 60%
+            );
+            transform: rotate(35deg);
+            transition: var(--transition-default);
+            opacity: 0;
+        }
+        
+        .luxury-card:hover::after {
+            opacity: 1;
+            left: 120%;
+        }
+        
+        /* ── PROFILE RING ── */
+        .profile-ring {
+            position: relative;
+            padding: 12px;
+        }
+        
+        .profile-ring::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 2px dashed var(--gold);
+            border-radius: 9999px;
+            animation: rotate 25s linear infinite;
+            opacity: 0.55;
+            filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.35));
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        /* ── GOLD BUTTON SHINE ── */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--royal-blue), var(--indigo-mid));
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            font-weight: 600;
+            border-radius: 12px;
+            transition: var(--transition-default);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-md), 0 0 20px rgba(37, 99, 235, 0.18);
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--gold), var(--royal-blue));
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg), 0 0 36px rgba(251, 191, 36, 0.28);
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(251, 191, 36, 0.18) 0%, transparent 60%);
+            transform: rotate(30deg);
+            transition: var(--transition-default);
+        }
+        
+        .btn-primary:hover::before {
+            animation: gold-shine 1.2s;
+        }
+        
+        @keyframes gold-shine {
+            0%   { transform: rotate(30deg) translateX(-110%, -110%); }
+            100% { transform: rotate(30deg) translateX(110%, 110%); }
+        }
+        
+        .btn-outline {
+            border: 2px solid var(--gold);
+            background: transparent;
+            color: var(--gold);
+            padding: 12px 28px;
+            font-weight: 600;
+            border-radius: 12px;
+            transition: var(--transition-default);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 12px rgba(251, 191, 36, 0.08);
+        }
+        
+        .btn-outline:hover {
+            background: var(--gold);
+            color: var(--text-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px 0 rgba(251, 191, 36, 0.32),
+                        0 0 40px rgba(251, 191, 36, 0.12);
+        }
+        
+        .hover-lift {
+            transition: var(--transition-default);
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-8px);
+        }
+        
+        .animate-delay-100 {
+            animation-delay: 100ms;
+        }
+        
+        .animate-delay-200 {
+            animation-delay: 200ms;
+        }
+        
+        .animate-delay-300 {
+            animation-delay: 300ms;
+        }
+        
+        .animate-delay-400 {
+            animation-delay: 400ms;
+        }
+        
+        .animate-delay-500 {
+            animation-delay: 500ms;
+        }
+        
+        .animate-delay-600 {
+            animation-delay: 600ms;
+        }
+        
+        /* ── TRUSTED-BY SLIDER LOGO WRAPPER ── */
+        #clients .swiper-slide {
+            background: #000;
+            border-radius: 14px;
+            padding: 22px 18px;
+            overflow: hidden;
+            box-shadow: 0 4px 22px rgba(0, 0, 0, 0.6);
+            transition: var(--transition-default);
+            border: 1px solid rgba(251, 191, 36, 0.09);
+            min-height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        #clients .swiper-slide:hover {
+            border-color: rgba(251, 191, 36, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7), 0 0 24px rgba(251, 191, 36, 0.08);
+            transform: translateY(-4px);
+        }
+        
+        #clients .swiper-slide img {
+            height: 44px;
+            width: auto;
+            object-fit: contain;
+            filter: none;
+            transition: var(--transition-default);
+        }
+        
+        #clients .swiper-slide img:hover {
+            filter: none;
+            opacity: 1 !important;
+        }
+
+        img {
+            -webkit-user-drag: none;
+            user-select: none;
+            -webkit-user-select: none;
+            pointer-events: none;
+        }
+
+        .service-card {
+            min-height: 230px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .service-card > div:last-child {
+            max-width: 18rem;
+        }
+
+        .brand-logo {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            font-weight: 900;
+            letter-spacing: -0.06em;
+            line-height: 1;
+            white-space: nowrap;
+        }
+        
+        #clients .swiper-slide svg {
+            height: 42px;
+            width: auto;
+            transition: var(--transition-default);
+        }
+        
+        #clients .swiper-slide svg:hover {
+            opacity: 1 !important;
+            filter: drop-shadow(0 0 6px rgba(251, 191, 36, 0.35));
+        }
+
+        .mask-edges {
+            -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+            mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+        }
+        
+        #clients .swiper-slide svg text,
+        #clients .swiper-slide svg path {
+            transition: var(--transition-default);
+        }
+        
+        .btn-outline:hover {
+            background: var(--gold);
+            color: var(--background-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px 0 rgba(251, 191, 36, 0.3);
+        }
+        
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--text-lighter);
+            text-shadow: 0 0 30px rgba(251, 191, 36, 0.18), 0 0 60px rgba(37, 99, 235, 0.10);
+            position: relative;
+            letter-spacing: -0.01em;
+        }
+        
+        .section-title span {
+            color: var(--gold);
+            background: none;
+            -webkit-background-clip: unset;
+            -webkit-text-fill-color: unset;
+            background-clip: unset;
+            text-shadow: 0 0 20px rgba(251, 191, 36, 0.30);
+            position: relative;
+        }
+        
+        .section-title span::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, var(--gold), var(--royal-blue));
+            border-radius: 2px;
+            box-shadow: 0 0 12px rgba(251, 191, 36, 0.45);
+        }
+
+        .section-title-left {
+            text-align: left;
+        }
+
+        .section-title-left span::after {
+            left: 0;
+            transform: none;
+        }
+        
+        .section-title-smaller {
+            font-size: 1.8rem;
+            font-weight: 800;
+            text-align: center;
+            color: var(--text-lighter);
+            text-shadow: 0 0 20px rgba(251, 191, 36, 0.18);
+            position: relative;
+        }
+        
+        .text-primary {
+            color: var(--text-primary);
+        }
+        
+        .text-secondary {
+            color: var(--text-secondary);
+        }
+        
+        .text-muted {
+            color: var(--text-muted);
+        }
+        
+        .text-white {
+            color: var(--text-white);
+        }
+        
+        .text-light {
+            color: var(--text-light);
+        }
+        
+        .text-lighter {
+            color: var(--text-lighter);
+        }
+        
+        /* ── GOLD ACCENT ── */
+        .text-gold {
+            color: var(--gold) !important;
+        }
+        
+        /* ── NAV LINKS (dark bg luxury) ── */
+        .nav-link {
+            position: relative;
+            color: var(--text-lighter);
+            font-weight: 500;
+            transition: var(--transition-default);
+            text-shadow: 0 0 8px rgba(251, 191, 36, 0.12);
+        }
+        
+        .nav-link:hover {
+            color: var(--gold) !important;
+            text-shadow: 0 0 16px rgba(251, 191, 36, 0.35);
+        }
+        
+        .nav-link.active {
+            color: var(--gold);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, var(--gold), var(--royal-blue));
+            transition: var(--transition-default);
+            box-shadow: 0 0 8px rgba(251, 191, 36, 0.4);
+        }
+        
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .header-bg {
+            background: rgba(8, 7, 20, 0.82);
+            backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(251, 191, 36, 0.12);
+        }
+        
+        .icon-bg {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .icon-bg-indigo {
+            background: rgba(30, 27, 75, 0.2);
+            border: 1px solid rgba(30, 27, 75, 0.3);
+        }
+        
+        .icon-bg-blue {
+            background: rgba(37, 99, 235, 0.2);
+            border: 1px solid rgba(37, 99, 235, 0.3);
+        }
+        
+        .icon-bg-gold {
+            background: rgba(251, 191, 36, 0.2);
+            border: 1px solid rgba(251, 191, 36, 0.3);
         }
     </style>
 </head>
-<body class="antialiased">
+<body class="antialiased bg-indigo-gradient">
 
-    <!-- Header & Navigation -->
-    <header class="bg-black/50 backdrop-blur-lg sticky top-0 z-50 border-b border-gray-800">
-        <nav class="container mx-auto px-4 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <a href="#home" class="text-2xl font-bold text-white">Joy Kamau.</a>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#about" class="nav-link text-gray-300 hover:text-teal-400 transition-colors">About</a>
-                    <a href="#skills" class="nav-link text-gray-300 hover:text-teal-400 transition-colors">Skills</a>
-                    <a href="#projects" class="nav-link text-gray-300 hover:text-teal-400 transition-colors">Projects</a>
-                    <a href="#contact" class="nav-link text-gray-300 hover:text-teal-400 transition-colors">Contact</a>
-                </div>
-                 <a href="#contact" class="hidden md:inline-block bg-teal-400 hover:bg-teal-300 text-black font-bold py-2 px-5 rounded-lg text-sm transition-all duration-300 transform hover:scale-105">
-                    Hire Me
-                </a>
+    <header class="fixed w-full top-0 z-50 header-bg border-b border-white/5">
+        <nav class="container mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="text-2xl font-extrabold tracking-tighter text-white">JOY<span class="text-gold">.</span></a>
+            <div class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest text-gray-400">
+                <a href="#about" class="hover:text-amber-400 transition-colors nav-link">About</a>
+                <a href="#skills" class="hover:text-amber-400 transition-colors nav-link">Skills</a>
+                <a href="#projects" class="hover:text-amber-400 transition-colors nav-link">Work</a>
+                <a href="#contact" class="hover:text-amber-400 transition-colors nav-link">Contact</a>
             </div>
+            <a href="mailto:joykamau123@gmail.com" class="bg-amber-400 text-black px-6 py-2 rounded-lg text-xs font-black uppercase">Consult</a>
         </nav>
     </header>
 
-    <main class="container mx-auto px-4 lg:px-8">
-        
+<main>
         <!-- Hero Section -->
-        <section id="home" class="min-h-screen flex items-center">
-            <div class="grid md:grid-cols-2 gap-8 items-center">
-                <div class="space-y-4">
-                    <span class="text-teal-400 font-semibold">Hello! I'm Joy Kamau.</span>
-                    <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight">
-                        Freelance <span class="text-teal-400 text-glow">UX/UI Designer</span> & Web Developer.
+        <section class="min-h-screen flex items-center pt-28 pb-12">
+            <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <span class="text-gold font-bold tracking-widest uppercase text-sm animate-delay-100">Hello! I'm <span class="text-white">Joy Kamau</span></span>
+                    <h1 class="text-6xl lg:text-8xl font-black text-white leading-[0.9] tracking-tighter animate-delay-200">
+                        A Software <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-amber-400 animate-delay-300">Consultant Developer & Designer</span> 
                     </h1>
-                    <p class="text-gray-400 max-w-lg">I design and build beautiful, modern, and user-friendly websites. I am passionate about creating smart, innovative solutions.</p>
-                    <div class="flex space-x-4 pt-4">
-                        <a href="#projects" class="bg-teal-400 hover:bg-teal-300 text-black font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105">View My Work</a>
-                        <a href="images/resume.pdf" target="_blank" class="border border-gray-700 hover:bg-gray-800 text-white font-bold py-3 px-6 rounded-lg transition-colors">View CV</a>
+                    <p class="text-secondary text-lg max-w-lg leading-relaxed animate-delay-400">
+                        I design and build beautiful, modern, and user-friendly websites. I am passionate about creating smart, innovative solutions that bridge the gap between business and technology.
+                    </p>
+                    <div class="flex items-center space-x-6 pt-4 animate-delay-500">
+                        <a href="#projects" class="btn-primary hover-lift">View My Work</a>
+                        <a href="images/resume.pdf" class="btn-outline hover-lift">View CV</a>
                     </div>
                 </div>
-                <div class="hidden md:block">
-                    <img src="https://placehold.co/600x600/0a0a0a/2dd4bf?text=JK" alt="Joy Kamau" class="rounded-full shadow-2xl shadow-teal-500/20">
+                <div class="flex justify-center">
+                    <div class="profile-ring w-72 h-72 md:w-96 md:h-96 animate-delay-600">
+                        <img src="images/jk1.jpeg" alt="Joy Kamau" class="w-full h-full object-cover rounded-full shadow-2xl border-2 border-amber-400/30">
+                    </div>
+                </div>
+            </div>
+        </section>
+         
+        <section id="about" style="background-image:url('images/bg3.jpg')" class="section-banner py-24">
+            <div class="container mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-16">
+                    <div class="space-y-8">
+                        <h2 class="text-3xl font-black mb-6 uppercase tracking-tighter section-title section-title-left animate-delay-100">
+                            A Bit About <span class="text-gold">Myself</span>
+                        </h2>
+                        <p class="text-secondary leading-relaxed mb-6 animate-delay-200">
+                            I am a passionate Software Developer, having done a Bachelors in Business Information Technology. I thrive at the intersection of creativity and technology, where intuitive design meets smart execution.
+                        </p>
+                        <p class="text-secondary leading-relaxed animate-delay-300">
+                            With a knack for connecting big ideas to practical solutions, I bring a well-rounded perspective shaped by both technical skills and business insight. Whether it's crafting user experiences or solving problems, I'm driven by curiosity, detail and a desire to create impact.
+                        </p>
+                        <div class="flex items-center space-x-6 pt-8 animate-delay-400">
+                            <a href="#projects" class="btn-primary hover-lift">View My Work</a>
+                            <a href="images/resume.pdf" class="btn-outline hover-lift">Download Resume</a>
+                        </div>
+                    </div>
+                    <div class="glass-card-hover p-8 rounded-2xl border-l-4 border-l-amber-400 animate-delay-500">
+<p class="text-secondary leading-relaxed mb-6 animate-delay-200">
+    Driven by the urge to solve real-world problems through positive technology approaches, I leverage my Bachelors in Business Information Technology to engineer impactful digital experiences where premium service meets execution.
+</p>
+<p class="text-secondary leading-relaxed animate-delay-300">
+    My journey is fueled by a profound love for learning and a relentless pursuit of excellence. By constantly refining my skills, I bridge the gap between complex software systems and commercial needs to consistently deliver high-tier, sophisticated, and value-driven results.
+</p>                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- About Section -->
-        <section id="about" class="py-20">
-             <h2 class="text-3xl font-bold text-center mb-2">About Me</h2>
-             <p class="text-teal-400 text-center mb-12">A creative software designer passionate about smart innovative technologies.</p>
-             <div class="bg-gray-900/50 border border-gray-800 rounded-xl p-8 grid md:grid-cols-2 gap-8">
-                <div>
-                     <h3 class="text-2xl font-bold text-white mb-4">A Bit About Myself</h3>
-                     <p class="text-gray-400">
-I am a passionate Software Developer, having done a Bachelors in Business Information
-Technology. I thrive at the intersection of creativity and technology, where intuitive
-design meets smart execution. With a knack for connecting big ideas to practical
-solutions, I bring a well-rounded perspective shaped by both technical skills and
-business insight. Whether it's crafting user experiences or solving problems, I’m driven
-by curiosity, detail and a desire to create impact.
-                     </p>
-                </div>
-                <div>
-                    <h3 class="text-2xl font-bold text-white mb-4">Contact Details</h3>
-                    <ul class="text-gray-400 space-y-2">
-                        <li><strong>Name:</strong> Joy Kamau</li>
-                        <li><strong>Location:</strong> Nairobi, Kenya</li>
-                        <li><strong>Email:</strong> joykamau123@gmail.com</li>
-                        <li><strong>Linkedin:</strong> <a href="https://www.linkedin.com/in/joy-kamau-945725221/" target="_blank" class="text-teal-400 hover:underline">joy-kamau-945725221</a></li>
-                        <li><strong>Phone:</strong> +254710580320</li>
-                    </ul>
-                </div>
-             </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills" class="py-20">
-            <h2 class="text-3xl font-bold text-center mb-2">My Skills</h2>
-            <p class="text-teal-400 text-center mb-12">Technologies I work with.</p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <span class="bg-gray-800 text-gray-300 px-4 py-2 rounded-full font-medium">Python</span>
-                <span class="bg-gray-800 text-gray-300 px-4 py-2 rounded-full font-medium">Django</span>
-                <span class="bg-gray-800 text-gray-300 px-4 py-2 rounded-full font-medium">React</span>
-                <span class="bg-gray-800 text-gray-300 px-4 py-2 rounded-full font-medium">JavaScript</span>
-                <span class="bg-gray-800 text-gray-300 px-4 py-2 rounded-full font-medium">HTML5</span>
-                <span class="bg-gray-800 text-gray-300 px-4 py-2 rounded-full font-medium">CSS3 & Tailwind</span>
-                <span class="bg-gray-800 text-gray-300 px-4 py-2 rounded-full font-medium">MySQL</span>
-                <span class="bg-gray-800 text-gray-300 px-4 py-2 rounded-full font-medium">Saas</span>
-                <span class="bg-gray-800 text-gray-300 px-4 py-2 rounded-full font-medium">UI/UX Design</span>
-                <span class="bg-gray-800 text-gray-300 px-4 py-2 rounded-full font-medium">Photoshop</span>
-                <span class="bg-gray-800 text-gray-300 px-4 py-2 rounded-full font-medium">Business Analysis</span>
-                <span class="bg-gray-800 text-gray-300 px-4 py-2 rounded-full font-medium">Project Management</span>
-                <span class="bg-gray-800 text-gray-300 px-4 py-2 rounded-full font-medium">Database Management</span>
-                <span class="bg-gray-800 text-gray-300 px-4 py-2 rounded-full font-medium">Microsoft Office</span>
-
-            </div>
-        </section>
-
-        <!-- Projects Gallery Section -->
-        <section id="projects" class="py-20">
-            <h2 class="text-3xl font-bold text-center mb-2">Projects Gallery</h2>
-            <p class="text-teal-400 text-center mb-12">A selection of my work.</p>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
-                <!-- Project Card 1: SmartSpace -->
-                <div class="group relative overflow-hidden rounded-lg shadow-lg">
-                    <img src="https://placehold.co/600x400/1a1a1a/2dd4bf?text=SmartSpace" alt="SmartSpace Project" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-white/95 flex flex-col justify-center items-center text-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">SmartSpace Platform</h3>
-                        <p class="text-gray-700 mb-4 text-sm">A residential management system with Django and React.</p>
-                        <div>
-                            <a href="images/residentials.mp4" target="_blank" class="text-teal-600 hover:underline mr-4">Video Demo</a>
-                            <a href="https://github.com/SmartJk123/residential-management.git" target="_blank" class="text-teal-600 hover:underline">GitHub</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project Card 2: Tunebox Photobooth -->
-                 <div class="group relative overflow-hidden rounded-lg shadow-lg">
-                    <img src="https://placehold.co/600x400/1a1a1a/2dd4bf?text=Tunebox" alt="Tunebox Photobooth Project" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-white/95 flex flex-col justify-center items-center text-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Tunebox Photobooth</h3>
-                        <p class="text-gray-700 mb-4 text-sm">A commercial website for a photobooth rental company.</p>
-                        <div>
-                            <a href="https://tunebox-photobooth.com/" target="_blank" class="text-teal-600 hover:underline mr-4">Live Site</a>
-                            <a href="https://github.com/SmartJk123/TB-Photobooth.git" target="_blank" class="text-teal-600 hover:underline">GitHub</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project Card 3: Wash Dry Cleaner -->
-                 <div class="group relative overflow-hidden rounded-lg shadow-lg">
-                    <img src="https://placehold.co/600x400/1a1a1a/2dd4bf?text=Wash+Cleaners" alt="Wash Dry Cleaner Project" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-white/95 flex flex-col justify-center items-center text-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Wash Dry Cleaners</h3>
-                        <p class="text-gray-700 mb-4 text-sm">A clean, professional website for a local dry cleaning service.</p>
-                        <div>
-                            <a href="https://wash.co.ke/" target="_blank" class="text-teal-600 hover:underline mr-4">Live Site</a>
-                            <a href="https://github.com/SmartJk123/washdrycleaner.git" target="_blank" class="text-teal-600 hover:underline">GitHub</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project Card 4: Spotter App -->
-                <div class="group relative overflow-hidden rounded-lg shadow-lg">
-                    <img src="https://placehold.co/600x400/1a1a1a/2dd4bf?text=Spotter+App" alt="Spotter App Project" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-white/95 flex flex-col justify-center items-center text-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Spotter App</h3>
-                        <p class="text-gray-700 mb-4 text-sm">A mobile application concept for the Spotter ecosystem.</p>
-                        <div>
-                            <a href="https://spotter-app-six.vercel.app/" target="_blank" class="text-teal-600 hover:underline mr-4">Live Demo</a>
-                            <a href="https://github.com/SmartJk123/Spotter-App.git" target="_blank" class="text-teal-600 hover:underline">GitHub</a>
-                        </div>
-                    </div>
-                </div>
-
-                 <!-- Add more project cards here -->
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="py-20 text-center">
-            <h2 class="text-3xl font-bold text-white mb-2">Get In Touch</h2>
-            <p class="text-gray-400 mb-8">Have a project in mind? Let's talk!</p>
-            <a href="mailto:joykamau123@gmail.com" class="bg-teal-400 hover:bg-teal-300 text-black font-bold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 inline-block">
-                joykamau123@gmail.com
-            </a>
-        </section>
+<section style="background-image: url('images/bg4.jpg');" class="image-strip py-24 bg-cover bg-center bg-no-repeat relative">
+    <div class="container mx-auto px-6 relative z-10">
         
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center items-stretch">
+            
+            <div class="service-card p-8 glass-card-hover rounded-xl luxury-card flex flex-col text-center">
+                <div class="w-12 h-12 rounded-full icon-bg icon-bg-indigo mb-4 mx-auto flex items-center justify-center">
+                    <i data-lucide="layout" class="text-gold w-5 h-5"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-2 text-white">Search Engine Optimization (SEO)</h3>
+                    <p class="text-xs text-secondary leading-relaxed">
+                        Optimizing websites for search engines to improve search engine rankings, visibility, and drive high-quality organic traffic.
+                    </p>
+                </div>
+            </div>
+
+            <div class="service-card p-8 glass-card-hover rounded-xl luxury-card flex flex-col text-center">
+                <div class="w-12 h-12 rounded-full icon-bg icon-bg-blue mb-4 mx-auto flex items-center justify-center">
+                    <i data-lucide="code-2" class="text-gold w-5 h-5"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-2 text-white">Full-Stack Web Development</h3>
+                    <p class="text-xs text-secondary leading-relaxed">
+                        Clean code implementation using Python, Django, and modern React for fast, responsive, and secure digital platforms.
+                    </p>
+                </div>
+            </div>
+
+            <div class="service-card p-8 glass-card-hover rounded-xl luxury-card flex flex-col text-center">
+                <div class="w-12 h-12 rounded-full icon-bg icon-bg-gold mb-4 mx-auto flex items-center justify-center">
+                    <i data-lucide="trending-up" class="text-gold w-5 h-5"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-2 text-white">Business Analysis</h3>
+                    <p class="text-xs text-secondary leading-relaxed">
+                        Leveraging Bachelors in Business Information Technology insights to seamlessly align technical architectures with bottom-line commercial goals.
+                    </p>
+                </div>
+            </div>
+
+        </div></div></section>
+
+        <section id="skills" class="py-24 section-bg">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-black mb-12 text-center uppercase tracking-tighter section-title animate-delay-100">
+                    My <span class="text-gold">Skills</span>
+                </h2>
+                <div class="max-w-5xl mx-auto space-y-8 animate-delay-200">
+
+                    <!-- Group 1 — Programming Languages -->
+                    <div class="glass-card-hover programming-languages-card p-6 rounded-2xl luxury-card">
+                        <h3 class="text-base font-black uppercase tracking-[0.12em] text-gold mb-4">Programming Languages</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">JavaScript</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">TypeScript</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">PHP</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">SQL</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Solidity</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Dart</span>
+                        </div>
+                    </div>
+
+                    <!-- Group 2 — Frameworks and Libraries -->
+                    <div class="glass-card-hover p-6 rounded-2xl luxury-card">
+                        <h3 class="text-base font-black uppercase tracking-[0.12em] text-gold mb-4">Frameworks &amp; Libraries</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Django</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Bootstrap</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">React</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Node.js</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Docker</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Laravel</span>
+                        </div>
+                    </div>
+
+                    <!-- Group 3 — Database Technologies -->
+                    <div class="glass-card-hover p-6 rounded-2xl luxury-card">
+                        <h3 class="text-base font-black uppercase tracking-[0.12em] text-gold mb-4">Database Technologies</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">MySQL</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">DBMS</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">MongoDB</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">SQLite</span>
+                        </div>
+                    </div>
+
+                    <!-- Group 4 — Softwares and Tools -->
+                    <div class="glass-card-hover p-6 rounded-2xl luxury-card">
+                        <h3 class="text-base font-black uppercase tracking-[0.12em] text-gold mb-4">Softwares &amp; Tools</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Git</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">GitLab</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Azure</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Webpack</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Sass</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Figma</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">MVP</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Google Cloud</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">AWS</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">SDLC</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">MVC Architecture</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">DevOps</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Canva</span>
+                        </div>
+                    </div>
+
+                    <!-- Group 5 — Top Skills -->
+                    <div class="glass-card-hover p-6 rounded-2xl luxury-card">
+                        <h3 class="text-base font-black uppercase tracking-[0.12em] text-gold mb-4">Top Skills</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Software Development</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Blockchain Technology</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Project Management</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Artificial Intelligence</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Machine Learning</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Generative AI</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">UI/UX Design</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Human Computer Interaction</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Business Intelligence</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Networking</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Database Management</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Microsoft Office</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Google Workspace</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Figma</span>
+                        </div>
+                    </div>
+
+                    <!-- Group 6 — Soft Skills -->
+                    <div class="glass-card-hover p-6 rounded-2xl luxury-card">
+                        <h3 class="text-base font-black uppercase tracking-[0.12em] text-gold mb-4">Soft Skills</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Communication</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Creativity</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Team Collaboration</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Willingness to Learn</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Problem Solving</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Analytical Skills</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Time Management</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Project Management</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Attention to Detail</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Adaptability</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Innovation</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+<!-- ========================================== -->
+<!--          TRUSTED BY & TECH STACK           -->
+<!-- ========================================== -->
+<section id="clients" style="background-image: url('images/bg6.jpg')" class="section-banner py-16 bg-cover bg-center relative">
+    <div class="absolute inset-0 bg-slate-950/85 backdrop-blur-sm"></div>
+
+    <div class="container mx-auto px-6 relative z-10">
+        <h2 class="text-xl font-bold mb-12 text-center uppercase tracking-widest text-slate-400">
+            Trusted By & Tech Stack
+        </h2>
+        
+        <div class="swiper logoSwiper overflow-hidden py-4 mask-edges">
+            <div class="swiper-wrapper ease-linear">
+                <div class="swiper-slide"><img src="https://skillicons.dev/icons?i=py&theme=dark" alt="Python"></div>
+                <div class="swiper-slide"><img src="https://skillicons.dev/icons?i=js&theme=dark" alt="JavaScript"></div>
+                <div class="swiper-slide"><img src="https://skillicons.dev/icons?i=react&theme=dark" alt="React"></div>
+                <div class="swiper-slide"><img src="https://skillicons.dev/icons?i=nodejs&theme=dark" alt="Node.js"></div>
+                <div class="swiper-slide"><img src="https://skillicons.dev/icons?i=django&theme=dark" alt="Django"></div>
+                <div class="swiper-slide"><img src="https://skillicons.dev/icons?i=mongodb&theme=dark" alt="MongoDB"></div>
+                <div class="swiper-slide"><img src="https://skillicons.dev/icons?i=docker&theme=dark" alt="Docker"></div>
+                <div class="swiper-slide"><img src="https://skillicons.dev/icons?i=aws&theme=dark" alt="AWS"></div>
+                <div class="swiper-slide"><img src="https://skillicons.dev/icons?i=azure&theme=dark" alt="Azure"></div>
+                <div class="swiper-slide"><img src="https://skillicons.dev/icons?i=figma&theme=dark" alt="Figma"></div>
+                <div class="swiper-slide"><img src="https://skillicons.dev/icons?i=php&theme=dark" alt="PHP"></div>
+                <div class="swiper-slide"><img src="https://skillicons.dev/icons?i=mysql&theme=dark" alt="MySQL"></div>
+                <div class="swiper-slide"><span class="brand-logo text-3xl"><span class="text-[#52c5d0]">n</span><span class="text-[#b24b99]">c</span><span class="text-[#52c5d0]">b</span><span class="text-[#b24b99]">a</span></span></div>
+                <div class="swiper-slide"><img src="images/tunebox-logo.png" alt="TuneBox"></div>
+                <div class="swiper-slide"><span class="brand-logo text-base tracking-tight"><span class="text-orange-500">WASH</span><span class="text-white">DRY</span><span class="ml-1 text-sky-400">CLEANERS</span></span></div>
+            </div>
+            <div class="swiper-wrapper legacy-logos hidden">
+                
+                <!-- Python (Full Color) -->
+                <div class="swiper-slide flex items-center justify-center opacity-90 hover:opacity-100 transition-opacity duration-300">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="h-9 w-auto">
+                </div>
+
+                <!-- JavaScript (Full Color) -->
+                <div class="swiper-slide flex items-center justify-center opacity-90 hover:opacity-100 transition-opacity duration-300">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="h-8 w-auto rounded">
+                </div>
+
+                <!-- React (Full Color) -->
+                <div class="swiper-slide flex items-center justify-center opacity-90 hover:opacity-100 transition-opacity duration-300">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" class="h-9 w-auto">
+                </div>
+
+                <!-- Node.js (Full Color) -->
+                <div class="swiper-slide flex items-center justify-center opacity-90 hover:opacity-100 transition-opacity duration-300">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" class="h-8 w-auto">
+                </div>
+
+                <!-- Django (Full Color) -->
+                <div class="swiper-slide flex items-center justify-center opacity-90 hover:opacity-100 transition-opacity duration-300">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django" class="h-8 w-auto filter brightness-125">
+                </div>
+
+                <!-- Frappe Framework (Full Color) -->
+                <div class="swiper-slide flex items-center justify-center opacity-90 hover:opacity-100 transition-opacity duration-300">
+                    <img src="https://api.iconify.design/logos:frappe.svg" alt="Frappe Framework" class="h-7 w-auto">
+                </div>
+
+                <!-- ERPNext (Full Color) -->
+                <div class="swiper-slide flex items-center justify-center opacity-90 hover:opacity-100 transition-opacity duration-300">
+                    <img src="https://api.iconify.design/logos:erpnext.svg" alt="ERPNext" class="h-6 w-auto">
+                </div>
+
+                <!-- MongoDB (Full Color) -->
+                <div class="swiper-slide flex items-center justify-center opacity-90 hover:opacity-100 transition-opacity duration-300">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" class="h-8 w-auto">
+                </div>
+
+                <!-- Oracle Database (Full Color Red/Dark) -->
+                <div class="swiper-slide flex items-center justify-center opacity-90 hover:opacity-100 transition-opacity duration-300">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg" alt="Oracle Database" class="h-8 w-auto">
+                </div>
+
+                <!-- Docker (Full Color) -->
+                <div class="swiper-slide flex items-center justify-center opacity-90 hover:opacity-100 transition-opacity duration-300">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" class="h-8 w-auto">
+                </div>
+
+                <!-- AWS (Full Color Squid Ink & Smile) -->
+                <div class="swiper-slide flex items-center justify-center opacity-90 hover:opacity-100 transition-opacity duration-300">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS" class="h-10 w-auto filter invert brightness-200">
+                </div>
+
+                <!-- Azure (Full Color Gradient) -->
+                <div class="swiper-slide flex items-center justify-center opacity-90 hover:opacity-100 transition-opacity duration-300">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" alt="Azure" class="h-8 w-auto">
+                </div>
+
+                <!-- Figma (Full Color) -->
+                <div class="swiper-slide flex items-center justify-center opacity-90 hover:opacity-100 transition-opacity duration-300">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" class="h-8 w-auto">
+                </div>
+
+                <!-- Kasha -->
+                <div class="swiper-slide flex items-center justify-center opacity-90 hover:opacity-100 transition-opacity duration-300">
+                    <span class="text-base font-black tracking-widest text-slate-200 uppercase font-sans">Kasha</span>
+                </div>
+
+                <!-- Absa Bank -->
+                <div class="swiper-slide flex items-center justify-center opacity-90 hover:opacity-100 transition-opacity duration-300">
+                    <img src="https://api.iconify.design/logos:absa.svg" alt="Absa Bank" class="h-6 w-auto">
+                </div>
+
+                <!-- IEBC ICT -->
+                <div class="swiper-slide flex items-center justify-center opacity-90 hover:opacity-100 transition-opacity duration-300">
+                    <span class="text-base font-black tracking-wider text-slate-200 font-mono">IEBC ICT</span>
+                </div>
+
+                <!-- KCA University -->
+                <div class="swiper-slide flex items-center justify-center opacity-90 hover:opacity-100 transition-opacity duration-300">
+                    <span class="text-sm font-extrabold tracking-tight text-slate-200 uppercase">KCA University</span>
+                </div>
+
+            </div><!-- /swiper-wrapper -->
+        </div><!-- /swiper-container -->
+        
+    </div><!-- /container -->
+</section><!-- /clients -->
+
+        <section id="projects" class="py-24 section-bg">
+            <div class="container mx-auto px-6">
+    <!-- projects done -->
+            <h2 class="text-3xl font-black mb-12 text-center uppercase tracking-tighter section-title animate-delay-100">
+                Projects <span class="text-gold">Done</span>
+            </h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                        <!-- Card 1 — Global's Smartspaces Residentials -->
+                     <a href="projects/smartspace.html"
+                        class="group project-card block rounded-2xl overflow-hidden shadow-xl cursor-pointer hover-lift transition-all duration-500 hover:shadow-2xl
+                               bg-[#12102a] border border-[#2a2560] hover:border-amber-400/40 flex flex-col">
+                         <div class="relative aspect-[16/10] overflow-hidden">
+                             <img src="images/Global's Smartspaces Residentials.png"
+                                  alt="Global's Smartspaces Residentials"
+                                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                             <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-amber-400/20 to-transparent z-10 pointer-events-none"></div>
+                             <div class="absolute inset-0 bg-gradient-to-t from-[#0f0e1a]/70 via-transparent to-transparent z-10 pointer-events-none"></div>
+                             <div class="absolute top-3 left-3 z-20">
+                                 <span class="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.18em]
+                                        bg-amber-400/90 text-[#12102a] border border-amber-300/40">
+                                     Residential
+                                 </span>
+                             </div>
+                         </div>
+                         <div class="p-6 flex flex-col flex-grow gap-3">
+                             <h3 class="text-xl font-extrabold text-white tracking-tight leading-snug"> Smartspaces Residentials</h3>
+                             <p class="text-sm text-secondary leading-relaxed">Modern residential management platform — tenant onboarding, payments, maintenance requests and real-time dashboards.</p>
+                             <div class="mt-auto pt-5 flex items-center justify-between border-t border-white/8">
+                                 <span class="text-[11px] text-muted font-medium">React · Django</span>
+                                 <span class="live-view-button inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-[11px] font-black uppercase tracking-[0.12em] transition-all duration-300">
+                                     Live View
+                                     <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                                 </span>
+                             </div>
+                         </div>
+                     </a>
+                     
+                        <!-- Card 2 — ERP System -->
+                     <a href="projects/erp-system.html"
+                        class="group project-card block rounded-2xl overflow-hidden shadow-xl cursor-pointer hover-lift transition-all duration-500 hover:shadow-2xl
+                               bg-[#12102a] border border-[#2a2560] hover:border-amber-400/40 flex flex-col">
+                         <div class="relative aspect-[16/10] overflow-hidden">
+                             <img src="images/erp6.png"
+                                  alt="ERP System"
+                                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                             <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-amber-400/20 to-transparent z-10 pointer-events-none"></div>
+                             <div class="absolute inset-0 bg-gradient-to-t from-[#0f0e1a]/70 via-transparent to-transparent z-10 pointer-events-none"></div>
+                             <div class="absolute top-3 left-3 z-20">
+                                 <span class="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.18em]
+                                        bg-amber-400/90 text-[#12102a] border border-amber-300/40">
+                                     ERP
+                                 </span>
+                             </div>
+                         </div>
+                         <div class="p-6 flex flex-col flex-grow gap-3">
+                             <h3 class="text-xl font-extrabold text-white tracking-tight leading-snug"> ERP System</h3>
+                             <p class="text-sm text-secondary leading-relaxed">Enterprise Resource Planning system for streamlined business operations, inventory management, and financial tracking.</p>
+                             <div class="mt-auto pt-5 flex items-center justify-between border-t border-white/8">
+                                 <span class="text-[11px] text-muted font-medium">Python · JavaScript · MySQL</span>
+                                 <span class="live-view-button inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-[11px] font-black uppercase tracking-[0.12em] transition-all duration-300">
+                                     Live View
+                                     <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                                 </span>
+                             </div>
+                         </div>
+                     </a>
+                     
+                        <!-- Card 3 — Ecommerce System -->
+                      <a href="projects/ecommerce.html"
+                         class="group project-card block rounded-2xl overflow-hidden shadow-xl cursor-pointer hover-lift transition-all duration-500 hover:shadow-2xl
+                                bg-[#12102a] border border-[#2a2560] hover:border-amber-400/40 flex flex-col">
+                          <div class="relative aspect-[16/10] overflow-hidden">
+                              <img src="images/ecommerce.png"
+                                   alt="Ecommerce System"
+                                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                              <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-amber-400/20 to-transparent z-10 pointer-events-none"></div>
+                              <div class="absolute inset-0 bg-gradient-to-t from-[#0f0e1a]/70 via-transparent to-transparent z-10 pointer-events-none"></div>
+                              <div class="absolute top-3 left-3 z-20">
+                                  <span class="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.18em]
+                                         bg-amber-400/90 text-[#12102a] border border-amber-300/40">
+                                      Ecommerce
+                                  </span>
+                              </div>
+                          </div>
+                          <div class="p-6 flex flex-col flex-grow gap-3">
+                              <h3 class="text-xl font-extrabold text-white tracking-tight leading-snug"> Ecommerce System</h3>
+                              <p class="text-sm text-secondary leading-relaxed">Full-featured ecommerce platform with product catalog, shopping cart, payment integration, and order management.</p>
+                              <div class="mt-auto pt-5 flex items-center justify-between border-t border-white/8">
+                                  <span class="text-[11px] text-muted font-medium">React · Medusa DB</span>
+                                  <span class="live-view-button inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-[11px] font-black uppercase tracking-[0.12em] transition-all duration-300">
+                                      Live View
+                                      <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                                  </span>
+                              </div>
+                          </div>
+                      </a>
+                      
+                        <!-- Card 4 — Tunebox Photobooth -->
+                       <a href="http://www.tunebox-photobooth.com" target="_blank"
+                          class="group project-card block rounded-2xl overflow-hidden shadow-xl cursor-pointer hover-lift transition-all duration-500 hover:shadow-2xl
+                                 bg-[#12102a] border border-[#2a2560] hover:border-amber-400/40 flex flex-col">
+                          <div class="relative aspect-[16/10] overflow-hidden">
+                              <img src="images/tunebox.png"
+                                   alt="Tunebox Photobooth"
+                                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                              <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-amber-400/20 to-transparent z-10 pointer-events-none"></div>
+                              <div class="absolute inset-0 bg-gradient-to-t from-[#0f0e1a]/70 via-transparent to-transparent z-10 pointer-events-none"></div>
+                              <div class="absolute top-3 left-3 z-20">
+                                  <span class="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.18em]
+                                         bg-amber-400/90 text-[#12102a] border border-amber-300/40">
+                                      Photobooth
+                                  </span>
+                              </div>
+                          </div>
+                          <div class="p-6 flex flex-col flex-grow gap-3">
+                              <h3 class="text-xl font-extrabold text-white tracking-tight leading-snug"> Tunebox Photobooth</h3>
+                              <p class="text-sm text-secondary leading-relaxed">Interactive photobooth application with social sharing, custom filters, and instant printing capabilities.</p>
+                              <div class="mt-auto pt-5 flex items-center justify-between border-t border-white/8">
+                                  <span class="text-[11px] text-muted font-medium">Django · HTML · CSS </span>
+                                  <span class="live-view-button inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-[11px] font-black uppercase tracking-[0.12em] transition-all duration-300">
+                                      Live View
+                                      <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                                  </span>
+                              </div>
+                          </div>
+                      </a>
+                      
+                        <!-- Card 5 — Washdry Cleaners -->
+                       <a href="http://www.wash.co.ke" target="_blank"
+                          class="group project-card block rounded-2xl overflow-hidden shadow-xl cursor-pointer hover-lift transition-all duration-500 hover:shadow-2xl
+                                 bg-[#12102a] border border-[#2a2560] hover:border-amber-400/40 flex flex-col">
+                          <div class="relative aspect-[16/10] overflow-hidden">
+                              <img src="images/wash.png"
+                                   alt="Washdry Cleaners"
+                                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                              <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-amber-400/20 to-transparent z-10 pointer-events-none"></div>
+                              <div class="absolute inset-0 bg-gradient-to-t from-[#0f0e1a]/70 via-transparent to-transparent z-10 pointer-events-none"></div>
+                              <div class="absolute top-3 left-3 z-20">
+                                  <span class="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.18em]
+                                         bg-amber-400/90 text-[#12102a] border border-amber-300/40">
+                                      Laundry
+                                  </span>
+                              </div>
+                          </div>
+                          <div class="p-6 flex flex-col flex-grow gap-3">
+                              <h3 class="text-xl font-extrabold text-white tracking-tight leading-snug"> Washdry Cleaners</h3>
+                              <p class="text-sm text-secondary leading-relaxed">Laundry management system with scheduling, inventory tracking, and customer notifications.</p>
+                              <div class="mt-auto pt-5 flex items-center justify-between border-t border-white/8">
+                                  <span class="text-[11px] text-muted font-medium">React · Node.js</span>
+                                  <span class="live-view-button inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-[11px] font-black uppercase tracking-[0.12em] transition-all duration-300">
+                                      Live View
+                                      <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                                  </span>
+                              </div>
+                          </div>
+                      </a>
+                      
+                        <!-- Card 6 — Spotter App -->
+                      <a href="projects/spotter.html"
+                         class="group project-card block rounded-2xl overflow-hidden shadow-xl cursor-pointer hover-lift transition-all duration-500 hover:shadow-2xl
+                                bg-[#12102a] border border-[#2a2560] hover:border-amber-400/40 flex flex-col">
+                          <div class="relative aspect-[16/10] overflow-hidden">
+                              <img src="images/project-6.jpg"
+                                   alt="Spotter App"
+                                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                              <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-amber-400/20 to-transparent z-10 pointer-events-none"></div>
+                              <div class="absolute inset-0 bg-gradient-to-t from-[#0f0e1a]/70 via-transparent to-transparent z-10 pointer-events-none"></div>
+                              <div class="absolute top-3 left-3 z-20">
+                                  <span class="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.18em]
+                                         bg-amber-400/90 text-[#12102a] border border-amber-300/40">
+                                      Spotter
+                                  </span>
+                              </div>
+                          </div>
+                          <div class="p-6 flex flex-col flex-grow gap-3">
+                              <h3 class="text-xl font-extrabold text-white tracking-tight leading-snug"> Spotter App</h3>
+                              <p class="text-sm text-secondary leading-relaxed">Real-time object detection and tracking application using computer vision and machine learning.</p>
+                              <div class="mt-auto pt-5 flex items-center justify-between border-t border-white/8">
+                                  <span class="text-[11px] text-muted font-medium">Python · OpenCV</span>
+                                  <span class="live-view-button inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-[11px] font-black uppercase tracking-[0.12em] transition-all duration-300">
+                                      Live View
+                                      <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                                  </span>
+                              </div>
+                          </div>
+                      </a>
+                </div><!-- /grid -->
+            </div><!-- /container -->
+        </section>
+
+        <!-- WORK EXPERIENCE -->
+        <section id="experience" class="py-24 section-bg">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-black mb-12 text-center uppercase tracking-tighter section-title animate-delay-100">
+                    Work <span class="text-gold">Experience</span>
+                </h2>
+                <div class="max-w-4xl mx-auto space-y-8 animate-delay-200">
+                    <!-- Experience Card 1 -->
+                    <div class="glass-card-hover p-6 rounded-2xl luxury-card">
+                        <h3 class="text-base font-black uppercase tracking-[0.12em] text-gold mb-4">Senior Software Developer</h3>
+                        <p class="text-sm text-secondary mb-2">TechSolutions Inc. | Nairobi, Kenya</p>
+                        <p class="text-xs text-gold font-semibold mb-3">Jan 2023 - Present</p>
+                        <p class="text-[11px] text-secondary leading-relaxed mb-4">
+                            Led development of enterprise-scale applications using Django and React, managing a team of 4 developers. Improved system performance by 40% through optimization and microservices architecture.
+                        </p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Django</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">React</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Python</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">AWS</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Docker</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Experience Card 2 -->
+                    <div class="glass-card-hover p-6 rounded-2xl luxury-card">
+                        <h3 class="text-base font-black uppercase tracking-[0.12em] text-gold mb-4">Full Stack Developer</h3>
+                        <p class="text-sm text-secondary mb-2">DigitalCraft Agency | Nairobi, Kenya</p>
+                        <p class="text-xs text-gold font-semibold mb-3">Mar 2021 - Dec 2022</p>
+                        <p class="text-[11px] text-secondary leading-relaxed mb-4">
+                            Developed and maintained client websites and web applications using modern JavaScript frameworks. Collaborated with designers to implement pixel-perfect UI/UX designs.
+                        </p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">JavaScript</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Vue.js</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Node.js</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">MongoDB</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Git</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Experience Card 3 -->
+                    <div class="glass-card-hover p-6 rounded-2xl luxury-card">
+                        <h3 class="text-base font-black uppercase tracking-[0.12em] text-gold mb-4">Junior Web Developer</h3>
+                        <p class="text-sm text-secondary mb-2">WebStart Solutions | Nairobi, Kenya</p>
+                        <p class="text-xs text-gold font-semibold mb-3">Jun 2020 - Feb 2021</p>
+                        <p class="text-[11px] text-secondary leading-relaxed mb-4">
+                            Assisted in building responsive websites using HTML, CSS, and JavaScript. Participated in code reviews and learned best practices in web development.
+                        </p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">HTML</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">CSS</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">JavaScript</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Bootstrap</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Photoshop</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+<section id="education" class="py-24 section-bg">
+    <div class="container mx-auto px-6">
+        
+        <h2 class="text-3xl font-black mb-12 text-center uppercase tracking-tighter section-title animate-delay-100">
+            Education <span class="text-gold">& Certifications</span>
+        </h2>
+        
+        <div class="grid md:grid-cols-2 gap-8 mb-16">
+            
+            <div class="glass-card-hover p-6 rounded-2xl luxury-card">
+                <h3 class="text-base font-black uppercase tracking-[0.12em] text-gold mb-4">
+                    Bachelors in Business Information Technology
+                </h3>
+                <p class="text-sm text-secondary mb-2">KCA University | Nairobi, Kenya</p>
+                <p class="text-xs text-gold font-semibold mb-3">2016 - 2020</p>
+                <p class="text-[11px] text-secondary leading-relaxed mb-4">
+                    Graduated with Second Class Honours (Upper Division). Relevant coursework: Database Systems, Software Engineering, Web Technologies, Business Analytics, and Project Management.
+                </p>
+                <div class="flex flex-wrap gap-3">
+                    <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Database Management</span>
+                    <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Business Analysis</span>
+                    <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Project Management</span>
+                    <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Systems Analysis</span>
+                    <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Programming Fundamentals</span>
+                </div>
+            </div>
+            
+            <div class="glass-card-hover p-6 rounded-2xl luxury-card">
+                <h3 class="text-base font-black uppercase tracking-[0.12em] text-gold mb-4">
+                    Professional Certifications
+                </h3>
+                <p class="text-sm text-secondary mb-2">Various Platforms | Online</p>
+                <p class="text-xs text-gold font-semibold mb-3">2021 - 2024</p>
+                <p class="text-[11px] text-secondary leading-relaxed mb-4">
+                    Industry-recognized certifications validating expertise in cloud technologies, databases, and modern development practices.
+                </p>
+                <div class="flex flex-wrap gap-3">
+                    <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Google Cloud</span>
+                    <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Oracle OCI</span>
+                    <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">MongoDB</span>
+                    <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">AWS Practitioner</span>
+                    <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Microsoft Azure</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <a href="IBMDesignPractitioner.pdf" target="_blank" rel="noopener" class="group block glass-card-hover rounded-2xl luxury-card overflow-hidden hover-lift">
+                <div class="relative aspect-[4/3] bg-slate-950 overflow-hidden">
+                    <img src="images/ibm-design-practitioner-certificate-preview.jpg" alt="IBM Enterprise Design Thinking Practitioner certificate awarded to Joy Kamau" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-amber-400 text-[#1e1b4b]">IBM</span>
+                </div>
+                <div class="p-6">
+                    <h3 class="font-extrabold text-sm tracking-wide text-white leading-snug mb-1.5">Enterprise Design Thinking Practitioner</h3>
+                    <p class="text-xs text-gold font-semibold mb-3">IBM</p>
+                    <p class="text-[11px] text-secondary leading-relaxed mb-4">Professional credential in human-centred design practice, issued March 2025.</p>
+                    <div class="pt-3 border-t border-white/8 text-[11px] font-black uppercase tracking-widest text-amber-400">View certificate ↗</div>
+                </div>
+            </a>
+
+            <a href="Joy%20Kamau%20Certification%20.pdf" target="_blank" rel="noopener" class="group block glass-card-hover rounded-2xl luxury-card overflow-hidden hover-lift">
+                <div class="relative aspect-[4/3] bg-slate-950 overflow-hidden">
+                    <img src="images/joy-kamau-certificate-preview.jpg" alt="KCA University Bachelor of Business Information Technology certificate awarded to Joy Kamau" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-amber-400 text-[#1e1b4b]">KCA University</span>
+                </div>
+                <div class="p-6">
+                    <h3 class="font-extrabold text-sm tracking-wide text-white leading-snug mb-1.5">Bachelor of Business Information Technology</h3>
+                    <p class="text-xs text-gold font-semibold mb-3">KCA University</p>
+                    <p class="text-[11px] text-secondary leading-relaxed mb-4">Second Class Honours (Upper Division), awarded November 2025.</p>
+                    <div class="pt-3 border-t border-white/8 text-[11px] font-black uppercase tracking-widest text-amber-400">View certificate ↗</div>
+                </div>
+            </a>
+
+            <a href="images/alx-ai-career-essentials-certificate.png" target="_blank" rel="noopener" class="group block glass-card-hover rounded-2xl luxury-card overflow-hidden hover-lift">
+                <div class="relative aspect-[4/3] overflow-hidden bg-[#062e58]">
+                    <img src="images/alx-ai-career-essentials-certificate.png" alt="ALX AI Career Essentials certificate awarded to Joy Kamau" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-emerald-400 text-[#062e58]">ALX</span>
+                </div>
+                <div class="p-6">
+                    <h3 class="font-extrabold text-sm tracking-wide text-white leading-snug mb-1.5">AI Career Essentials</h3>
+                    <p class="text-xs text-gold font-semibold mb-3">ALX</p>
+                    <p class="text-[11px] text-secondary leading-relaxed mb-4">8-week programme in AI-augmented professional development skills.</p>
+                    <div class="pt-3 border-t border-white/8 text-[11px] font-black uppercase tracking-widest text-amber-400">View certificate ↗</div>
+                </div>
+            </a>
+
+            <a href="images/bitcoin-diploma-certificate.jpg" target="_blank" rel="noopener" class="group block glass-card-hover rounded-2xl luxury-card overflow-hidden hover-lift">
+                <div class="relative aspect-[4/3] overflow-hidden bg-slate-100">
+                    <img src="images/bitcoin-diploma-certificate.jpg" alt="Bitcoin Diploma certificate awarded to Joy Kamau" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-amber-400 text-[#1e1b4b]">Bitcoin</span>
+                </div>
+                <div class="p-6">
+                    <h3 class="font-extrabold text-sm tracking-wide text-white leading-snug mb-1.5">Bitcoin Diploma</h3>
+                    <p class="text-xs text-gold font-semibold mb-3">My First Bitcoin / The Core</p>
+                    <p class="text-[11px] text-secondary leading-relaxed mb-4">Certificate of completion for the Bitcoin Diploma online course.</p>
+                    <div class="pt-3 border-t border-white/8 text-[11px] font-black uppercase tracking-widest text-amber-400">View certificate ↗</div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Previous placeholder credential cards retained in source only; the verified certificates above are displayed. -->
+        <div class="placeholder-certificates hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            
+            <a href="#cert-modal-1" target="_blank" rel="noopener" class="group block glass-card-hover rounded-2xl luxury-card overflow-hidden hover-lift cursor-pointer">
+                <div class="relative aspect-[4/3] bg-gradient-to-br from-indigo-950 via-[#1e1b4b] to-[#312e81] overflow-hidden">
+                    <div class="absolute inset-3 border border-amber-400/25 rounded-lg pointer-events-none z-10"></div>
+                    <div class="absolute inset-3 border-l-2 border-t-2 border-amber-400/45 rounded-tl-lg pointer-events-none z-10"></div>
+
+                    <div class="absolute inset-0 flex items-center justify-center opacity-20 group-hover:opacity-30 transition-opacity duration-500">
+                        <svg viewBox="0 0 120 120" width="100" height="100">
+                            <path d="M60 10C33 10 11 32 11 59c0 18.5 13 33.9 30.8 38.8L35 90l16-8c5.7 1.3 11.6 2 17.6 2 27 0 49-22 49-49S87 10 60 10z" fill="none" stroke="white" stroke-width="3"/>
+                            <path d="M65 40v34h-12V40h12z" fill="white" opacity="0.6"/>
+                        </svg>
+                    </div>
+
+                    <div class="absolute top-3 left-3 z-20">
+                        <span class="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-amber-400/90 text-[#1e1b4b] border border-amber-300/50">
+                            Google Cloud
+                        </span>
+                    </div>
+
+                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-amber-300/8 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out z-20 pointer-events-none"></div>
+                </div>
+
+                <div class="p-6">
+                    <h3 class="font-extrabold text-sm tracking-wide text-white leading-snug mb-1.5">
+                        Associate Cloud Engineer
+                    </h3>
+                    <p class="text-xs text-gold font-semibold mb-3">Google Cloud Platform</p>
+                    <p class="text-[11px] text-secondary leading-relaxed mb-4">
+                        Validates proficiency deploying applications, monitoring operations and managing enterprise solutions on GCP.
+                    </p>
+                    <div class="flex items-center justify-between pt-3 border-t border-white/8">
+                        <span class="text-[11px] text-muted font-medium">Issued 2024</span>
+                        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-widest bg-emerald-500/12 text-emerald-400 border border-emerald-500/25">
+                            Valid
+                        </span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#cert-modal-2" target="_blank" rel="noopener" class="group block glass-card-hover rounded-2xl luxury-card overflow-hidden hover-lift cursor-pointer">
+                <div class="relative aspect-[4/3] bg-gradient-to-br from-[#1a0a00] via-[#1e1b4b] to-[#312e81] overflow-hidden">
+                    <div class="absolute inset-3 border border-amber-400/25 rounded-lg pointer-events-none z-10"></div>
+                    <div class="absolute inset-3 border-l-2 border-t-2 border-amber-400/45 rounded-tl-lg pointer-events-none z-10"></div>
+                    
+                    <div class="absolute inset-0 flex items-center justify-center opacity-20 group-hover:opacity-30 transition-opacity duration-500">
+                        <svg viewBox="0 0 120 120" width="90" height="90">
+                            <path d="M60 10C33 10 11 32 11 59c0 18.5 13 33.9 30.8 38.8L35 90l16-8c5.7 1.3 11.6 2 17.6 2 27 0 49-22 49-49S87 10 60 10z" fill="none" stroke="#F80000" stroke-width="3"/>
+                        </svg>
+                    </div>
+                    
+                    <div class="absolute top-3 left-3 z-20">
+                        <span class="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-red-500/90 text-white border border-red-400/50">
+                            Oracle
+                        </span>
+                    </div>
+                    
+                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-red-400/6 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out z-20 pointer-events-none"></div>
+                </div>
+                
+                <div class="p-6">
+                    <h3 class="font-extrabold text-sm tracking-wide text-white leading-snug mb-1.5">
+                        Oracle Cloud Infrastructure Associate
+                    </h3>
+                    <p class="text-xs text-gold font-semibold mb-3">Oracle University</p>
+                    <p class="text-[11px] text-secondary leading-relaxed mb-4">
+                        Covers OCI fundamentals: compute, storage, networking, database & identity management services.
+                    </p>
+                    <div class="flex items-center justify-between pt-3 border-t border-white/8">
+                        <span class="text-[11px] text-muted font-medium">Issued 2024</span>
+                        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-widest bg-emerald-500/12 text-emerald-400 border border-emerald-500/25">
+                            Valid
+                        </span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#cert-modal-3" target="_blank" rel="noopener" class="group block glass-card-hover rounded-2xl luxury-card overflow-hidden hover-lift cursor-pointer">
+                <div class="relative aspect-[4/3] bg-gradient-to-br from-[#0a1a0a] via-[#1e1b4b] to-[#1a2a4a] overflow-hidden">
+                    <div class="absolute inset-3 border border-amber-400/25 rounded-lg pointer-events-none z-10"></div>
+                    <div class="absolute inset-3 border-l-2 border-t-2 border-amber-400/45 rounded-tl-lg pointer-events-none z-10"></div>
+                    
+                    <div class="absolute inset-0 flex items-center justify-center opacity-25 group-hover:opacity-35 transition-opacity duration-500">
+                        <svg viewBox="0 0 120 120" width="90" height="90">
+                            <path d="M52 20c-6 0-11 5-13 10C26 34 22 44 22 50c0 10 7 18 17 22l3 2v15l-12 8-12-8V52c0-9 7-17 17-20 0-5-1-10-4-15C50 25 52 20 52 20z" fill="#47A248"/>
+                            <path d="M52 20c6 0 11 5 13 10" fill="none" stroke="#47A248" stroke-width="3"/>
+                            <path d="M65 32c0-14-8-24-18-28 0 12 7 20 17 23 6 2 12 3 18 3 6 0 11-1 17-3 10-3 17-11 17-23" fill="none" stroke="white" stroke-width="2.5" opacity="0.5"/>
+                        </svg>
+                    </div>
+                    
+                    <div class="absolute top-3 left-3 z-20">
+                        <span class="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-emerald-500/90 text-white border border-emerald-400/50">
+                            MongoDB
+                        </span>
+                    </div>
+                    
+                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-400/6 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out z-20 pointer-events-none"></div>
+                </div>
+                
+                <div class="p-6">
+                    <h3 class="font-extrabold text-sm tracking-wide text-white leading-snug mb-1.5">
+                        Associate Developer
+                    </h3>
+                    <p class="text-xs text-gold font-semibold mb-3">MongoDB University</p>
+                    <p class="text-[11px] text-secondary leading-relaxed mb-4">
+                        Schema design, aggregation pipelines, indexing strategies & Atlas cloud operations mastery.
+                    </p>
+                    <div class="flex items-center justify-between pt-3 border-t border-white/8">
+                        <span class="text-[11px] text-muted font-medium">Issued 2023</span>
+                        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-widest bg-emerald-500/12 text-emerald-400 border border-emerald-500/25">
+                            Valid
+                        </span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#cert-modal-4" target="_blank" rel="noopener" class="group block glass-card-hover rounded-2xl luxury-card overflow-hidden hover-lift cursor-pointer">
+                <div class="relative aspect-[4/3] bg-gradient-to-br from-[#0a1a2a] via-[#1e1b4b] to-[#1e3a6e] overflow-hidden">
+                    <div class="absolute inset-3 border border-amber-400/25 rounded-lg pointer-events-none z-10"></div>
+                    <div class="absolute inset-3 border-l-2 border-t-2 border-amber-400/45 rounded-tl-lg pointer-events-none z-10"></div>
+                    
+                    <div class="absolute inset-0 flex items-center justify-center opacity-20 group-hover:opacity-30 transition-opacity duration-500">
+                        <svg viewBox="0 0 120 120" width="90" height="90">
+                            <polygon points="60,12 108,36 108,84 60,108 12,84 12,36" fill="none" stroke="#0A66C2" stroke-width="3"/>
+                            <text x="60" y="68" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="22" font-weight="900" fill="#0A66C2">in</text>
+                        </svg>
+                    </div>
+                    
+                    <div class="absolute top-3 left-3 z-20">
+                        <span class="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-[#0A66C2]/90 text-white border border-[#0A66C2]/50">
+                            Meta
+                        </span>
+                    </div>
+                    
+                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-blue-500/6 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out z-20 pointer-events-none"></div>
+                </div>
+                
+                <div class="p-6">
+                    <h3 class="font-extrabold text-sm tracking-wide text-white leading-snug mb-1.5">
+                        Front-End Developer
+                    </h3>
+                    <p class="text-xs text-gold font-semibold mb-3">Coursera / Meta</p>
+                    <p class="text-[11px] text-secondary leading-relaxed mb-4">
+                        React, HTML, CSS, JavaScript & UI/UX fundamentals for production-grade single-page applications.
+                    </p>
+                    <div class="flex items-center justify-between pt-3 border-t border-white/8">
+                        <span class="text-[11px] text-muted font-medium">Issued 2023</span>
+                        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-widest bg-emerald-500/12 text-emerald-400 border border-emerald-500/25">
+                            Valid
+                        </span>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+    </div>
+</section>
+
+        <!-- CONTACT -->
+        <section id="contact" style="background-image:url('images/bg_1.jpg')" class="section-banner py-24">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-black mb-4 text-center uppercase tracking-tighter section-title animate-delay-100">
+                    Get In <span class="text-gold">Touch</span>
+                </h2>
+                <p class="text-secondary mb-16 text-center max-w-xl mx-auto animate-delay-200">
+                    Ready to bring your next big idea to life?
+                </p>
+                <div class="grid md:grid-cols-2 gap-12 animate-delay-300">
+                    <!-- Contact Form -->
+                    <div>
+                        <form id="contactForm" class="space-y-6" action="https://formspree.io/f/mgridwya" method="POST">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-light mb-2">Full Name</label>
+                                    <input type="text" id="name" name="name" required
+                                        class="w-full px-4 py-3 bg-white/[0.06] border border-white/16 rounded-lg text-white placeholder-white/38 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-amber-400 transition-all duration-300"
+                                        placeholder="Your full name">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-light mb-2">Email Address</label>
+                                    <input type="email" id="email" name="email" required
+                                        class="w-full px-4 py-3 bg-white/[0.06] border border-white/16 rounded-lg text-white placeholder-white/38 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-amber-400 transition-all duration-300"
+                                        placeholder="your@email.com">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label for="sector" class="block text-sm font-medium text-light mb-2">Industry / Sector</label>
+                                <select id="sector" name="sector" required
+                                    class="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-amber-400 transition-all duration-300 appearance-none bg-[url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23fbbf24%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><polyline points=%226 9 12 15 18 9%22></polyline></svg>')] bg-right bg-no-repeat pr-10"
+                                    >
+                                    <option value="" disabled selected style="color:#0f0e1a">Select your industry</option>
+                                    <option value="technology" style="color:#0f0e1a">Technology</option>
+                                    <option value="finance" style="color:#0f0e1a">Finance &amp; Banking</option>
+                                    <option value="healthcare" style="color:#0f0e1a">Healthcare</option>
+                                    <option value="retail" style="color:#0f0e1a">Retail &amp; E-commerce</option>
+                                    <option value="education" style="color:#0f0e1a">Education</option>
+                                    <option value="manufacturing" style="color:#0f0e1a">Manufacturing</option>
+                                    <option value="real-estate" style="color:#0f0e1a">Real Estate</option>
+                                    <option value="other" style="color:#0f0e1a">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div id="otherSectorField" class="hidden">
+                                <label for="otherSector" class="block text-sm font-medium text-light mb-2">Please specify:</label>
+                                <input type="text" id="otherSector" name="otherSector"
+                                    class="w-full px-4 py-3 bg-white/[0.06] border border-white/16 rounded-lg text-white placeholder-white/38 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-amber-400 transition-all duration-300"
+                                    placeholder="Specify your industry">
+                            </div>
+                            
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-light mb-2">Message</label>
+                                <textarea id="message" name="message" rows="5" required
+                                    class="w-full px-4 py-3 bg-white/[0.06] border border-white/16 rounded-lg text-white placeholder-white/38 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-amber-400 transition-all duration-300 resize-y"
+                                    placeholder="How can I help you with your project?"></textarea>
+                            </div>
+                            
+                            <button type="submit"
+                                class="w-full btn-primary hover-lift transition-all duration-300 transform hover:scale-[1.02]">
+                                Send Message
+                            </button>
+                        </form>
+                        
+                        <div id="formSuccess" class="hidden mt-6 text-center">
+                            <p class="text-green-400">Thank you for your message! I'll get back to you soon.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Details -->
+                    <div class="glass-card-hover p-8 rounded-2xl space-y-8 luxury-card">
+                        <h3 class="text-2xl font-bold mb-6 text-center section-title-smaller">
+                            Get In Touch
+                        </h3>
+                        <div class="space-y-6">
+                            <div class="flex items-center space-x-4">
+                                <div class="icon-bg icon-bg-blue">
+                                    <i data-lucide="mail" class="text-gold"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-muted">Email</p>
+                                    <p class="text-lg font-semibold text-lighter">joykamau123@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="icon-bg icon-bg-indigo">
+                                    <i data-lucide="phone" class="text-gold"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-muted">Phone</p>
+                                    <p class="text-lg font-semibold text-lighter">+254 710 580 320</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="icon-bg icon-bg-gold">
+                                    <i data-lucide="map-pin" class="text-gold"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-muted">Location</p>
+                                    <p class="text-lg font-semibold text-lighter">Nairobi, Kenya</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="icon-bg icon-bg-indigo">
+                                    <i data-lucide="linkedin" class="text-gold"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-muted">LinkedIn</p>
+                                    <p class="text-lg font-semibold text-lighter">linkedin.com/in/joykamau</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <footer class="border-t border-gray-800 mt-20">
-        <div class="container mx-auto px-4 lg:px-8 py-6 text-center text-gray-500">
-            <p>&copy; <span id="year"></span> Joy Kamau. All Rights Reserved.</p>
-        </div>
+    <footer class="py-12 border-t border-white/5 text-center text-[10px] text-gray-700 uppercase tracking-widest">
+        &copy; 2026 Joy Kamau. All rights reserved.
     </footer>
 
     <script>
-        // Set current year in footer
-        document.getElementById('year').textContent = new Date().getFullYear();
+        lucide.createIcons();
 
-        // Active nav link highlighting on scroll
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.nav-link');
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 100) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('nav-link-active');
-                if (link.getAttribute('href').includes(current)) {
-                    link.classList.add('nav-link-active');
-                }
-            });
+        // Deters casual image copying while preserving normal card and link navigation.
+        document.addEventListener('contextmenu', (event) => {
+            if (event.target.closest('img')) event.preventDefault();
+        });
+        document.addEventListener('dragstart', (event) => {
+            if (event.target.closest('img')) event.preventDefault();
         });
 
-    </script>
-</body>
-</html>
+        // Initialize Swiper for logo carousel
+        const logoSwiper = new Swiper('.logoSwiper', {
+            loop: true,
+            grabCursor: false,
+            allowTouchMove: false, // Prevents users dragging a continuous belt out of sync
+            slidesPerView: 2,
+            spaceBetween: 30,
+            speed: 4000, // Speed in ms to complete one complete slide cycle transition smoothly
+            autoplay: {
+                delay: 0,
+                disableOnInteraction: false,
+            },
+            breakpoints: {
+                480: {
+                    slidesPerView: 3,
+                    spaceBetween: 40,
+                },
+                768: {
+                    slidesPerView: 4,
+                    spaceBetween: 50,
+                },
+                1024: {
+                    slidesPerView: 6,
+                    spaceBetween: 60,
+                }
+            }
+        });
 
+        // Define observer options for scroll reveal
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+// Observe all sections and cards for scroll reveal
+         document.querySelectorAll('section[id]').forEach(el => {
+             el.style.opacity = '1';
+             el.style.transform = 'translateY(0)';
+             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+         });
+         document.querySelectorAll('.glass-card, .group, .icon-bg, .skill-tag').forEach(el => {
+             el.style.opacity = '0';
+             el.style.transform = 'translateY(30px)';
+             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+             observer.observe(el);
+         });
+         
+         // Contact form handling
+         const sectorSelect = document.getElementById('sector');
+         const otherSectorField = document.getElementById('otherSectorField');
+         const otherSectorInput = document.getElementById('otherSector');
+         const contactForm = document.getElementById('contactForm');
+         const formSuccess = document.getElementById('formSuccess');
+         
+         // Show/hide other sector field
+         sectorSelect.addEventListener('change', function() {
+             if (this.value === 'other') {
+                 otherSectorField.classList.remove('hidden');
+                 otherSectorInput.required = true;
+             } else {
+                 otherSectorField.classList.add('hidden');
+                 otherSectorInput.required = false;
+                 otherSectorInput.value = '';
+             }
+         });
+         
+         contactForm.addEventListener('submit', function(e) {
+             e.preventDefault();
+             
+             // Get form values
+             const name = document.getElementById('name').value.trim();
+             const email = document.getElementById('email').value.trim();
+             const sector = document.getElementById('sector').value;
+             const otherSector = document.getElementById('otherSector').value.trim();
+             const message = document.getElementById('message').value.trim();
+             
+             // Simple validation
+             if (name === '' || email === '' || message === '') {
+                 alert('Please fill in all required fields');
+                 return;
+             }
+             
+             if (sector === 'other' && otherSector === '') {
+                 alert('Please specify the sector');
+                 return;
+             }
+             
+             // Here you would typically send the data to a server
+             // For now, we'll just show a success message
+             formSuccess.style.display = 'block';
+             contactForm.reset();
+             
+             // Hide other sector field if visible
+             otherSectorField.classList.add('hidden');
+             otherSectorInput.required = false;
+         });
+         
+         // Add active class to nav links based on scroll position
+         const sections = document.querySelectorAll('section[id]');
+         const navLinks = document.querySelectorAll('.nav-link');
+         
+         window.addEventListener('scroll', () => {
+             let current = '';
+             
+             sections.forEach(section => {
+                 const sectionTop = section.offsetTop;
+                 const sectionHeight = section.clientHeight;
+                 if (pageYOffset >= sectionTop - 60) {
+                     current = section.getAttribute('id');
+                 }
+             });
+             
+             navLinks.forEach(link => {
+                 link.classList.remove('active');
+                 if (link.getAttribute('href').substring(1) === current) {
+                     link.classList.add('active');
+                 }
+             });
+         });
+         
+         // Add tilt effect to project cards on hover
+         const projectCards = document.querySelectorAll('.group');
+         
+         projectCards.forEach(card => {
+             card.addEventListener('mousemove', (e) => {
+                 const rect = card.getBoundingClientRect();
+                 const x = e.clientX - rect.left;
+                 const y = e.clientY - rect.top;
+                 
+                 const centerX = rect.width / 2;
+                 const centerY = rect.height / 2;
+                 
+                 const rotateX = (y - centerY) / 20;
+                 const rotateY = (centerX - x) / 20;
+                 card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+             });
+             
+             // Reset tilt effect on mouse leave
+             card.addEventListener('mouseleave', () => {
+                 card.style.transform = 'rotateX(0) rotateY(0)';
+             });
+         });
+ 
+    </script>
+ </body>
+ </html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tunebox Photobooth | Joy Kamau Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --indigo-dark: #1e1b4b;
+            --royal-blue: #2563eb;
+            --gold: #fbbf24;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #050505;
+            color: #f8fafc;
+        }
+        .bg-indigo-gradient {
+            background: radial-gradient(circle at 10% 10%, #1e1b4b 0%, #050505 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .skill-tag {
+            background: rgba(37, 99, 235, 0.1);
+            border: 1px solid rgba(37, 99, 235, 0.2);
+            transition: all 0.3s ease;
+        }
+        .skill-tag:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            transform: translateY(-2px);
+        }
+        .profile-ring {
+            position: relative;
+            padding: 12px;
+        }
+        .profile-ring::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 2px dashed var(--gold);
+            border-radius: 9999px;
+            animation: rotate 25s linear infinite;
+        }
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    </style>
+</head>
+<body class="antialiased bg-indigo-gradient">
+    
+    <header class="fixed w-full top-0 z-50 border-b border-white/5 bg-black/80 backdrop-blur-md">
+        <nav class="container mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="../index.html" class="text-2xl font-extrabold tracking-tighter text-white">JOY<span class="text-gold">.</span></a>
+            <div class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest text-gray-400">
+                <a href="../index.html#about" class="hover:text-amber-400 transition-colors">About</a>
+                <a href="../index.html#skills" class="hover:text-amber-400 transition-colors">Skills</a>
+                <a href="../index.html#projects" class="hover:text-amber-400 transition-colors">Work</a>
+                <a href="../index.html#contact" class="hover:text-amber-400 transition-colors">Contact</a>
+            </div>
+            <a href="mailto:joykamau123@gmail.com" class="bg-amber-400 text-black px-6 py-2 rounded-lg text-xs font-black uppercase">Hire Me</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="min-h-screen flex items-center pt-28 pb-12">
+            <div class="container mx-auto px-6">
+                <div class="space-y-6 text-center">
+                    <span class="text-blue-500 font-bold tracking-widest uppercase text-sm">Project Detail</span>
+                    <h1 class="text-5xl font-black text-white leading-[0.9] tracking-tighter">
+                        Tunebox Photobooth
+                    </h1>
+                    <p class="text-gray-400 text-lg max-w-xl leading-relaxed">
+                        Professional site for event rental services.
+                    </p>
+                    <a href="../index.html#projects" class="bg-white text-black px-8 py-4 rounded-full font-bold hover:bg-amber-400 transition-colors inline-block mt-6">
+                        Back to Projects
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24">
+            <div class="container mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-12">
+                    <div class="space-y-8">
+                        <h2 class="text-3xl font-black uppercase tracking-tighter">Project Overview</h2>
+                        <p class="text-gray-400 leading-relaxed mb-6">
+                            A professional website for an event photobooth rental service, featuring booking system, gallery, and customer testimonials.
+                        </p>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <i data-lucide="code" class="text-blue-500 mt-1 flex-shrink-0"></i>
+                                <div>
+                                    <h3 class="font-bold text-lg mb-1">Technologies Used</h3>
+                                    <p class="text-gray-400">HTML, CSS, JavaScript, PHP, MySQL</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <i data-lucide="camera" class="text-blue-500 mt-1 flex-shrink-0"></i>
+                                <div>
+                                    <h3 class="font-bold text-lg mb-1">Key Features</h3>
+                                    <p class="text-gray-400">• Online Booking<br>• Photo Gallery<br>• Custom Packages<br>• Customer Reviews<br>• Admin Panel</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <i data-lucide="users" class="text-blue-500 mt-1 flex-shrink-0"></i>
+                                <div>
+                                    <h3 class="font-bold text-lg mb-1">Client</h3>
+                                    <p class="text-gray-400">Event Services Company, Nairobi</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center">
+                        <div class="w-full max-w-xl">
+                            <div class="aspect-video bg-gray-200 overflow-hidden rounded-2xl">
+                                <img src="https://placehold.co/800x600/000000/ffffff?text=Tunebox+Photobooth" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-white/[0.02]">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-black mb-8 text-center uppercase tracking-tighter">Development Process</h2>
+                <div class="grid md:grid-cols-3 gap-8 text-center">
+                    <div class="p-6 glass-card rounded-xl">
+                        <i data-lucide="layout" class="mx-auto text-amber-400 mb-4"></i>
+                        <h3 class="font-bold text-lg mb-2">Concept</h3>
+                        <p class="text-xs text-gray-500">Understanding the event rental business model</p>
+                    </div>
+                    <div class="p-6 glass-card rounded-xl">
+                        <i data-lucide="code-2" class="mx-auto text-blue-500 mb-4"></i>
+                        <h3 class="font-bold text-lg mb-2">Development</h3>
+                        <p class="text-xs text-gray-500">Custom CMS for easy content management</p>
+                    </div>
+                    <div class="p-6 glass-card rounded-xl">
+                        <i data-lucide="check-circle" class="mx-auto text-emerald-500 mb-4"></i>
+                        <h3 class="font-bold text-lg mb-2">Launch</h3>
+                        <p class="text-xs text-gray-500">Increased bookings by 70% in first quarter</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-12 border-t border-white/5 text-center text-[10px] text-gray-700 uppercase tracking-widest">
+        &copy; 2026 Joy Kamau. All rights reserved.
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

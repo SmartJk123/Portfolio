@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERP System | Joy Kamau Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --indigo-dark: #1e1b4b;
+            --royal-blue: #2563eb;
+            --gold: #fbbf24;
+            --background-dark: #050505;
+            --background-darker: #010101;
+            --text-light: #f8fafc;
+            --text-lighter: #ffffff;
+            --text-muted: #94a3b8;
+            --border-light: rgba(255, 255, 255, 0.1);
+            --border-medium: rgba(255, 255, 255, 0.15);
+            --glass-bg: rgba(255, 255, 255, 0.02);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --transition-default: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-fast: all 0.15s ease-out;
+        }
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--background-dark);
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+        
+        .bg-indigo-gradient {
+            background: radial-gradient(circle at 10% 10%, var(--indigo-dark) 0%, var(--background-dark) 100%);
+        }
+        
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+        }
+        
+        .glass-card-hover {
+            transition: var(--transition-default);
+        }
+        
+        .glass-card-hover:hover {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            border-color: var(--gold);
+            box-shadow: 0 8px 32px 0 rgba(37, 99, 235, 0.2);
+            transform: translateY(-4px);
+        }
+        
+        .skill-tag {
+            background: rgba(37, 99, 235, 0.08);
+            border: 1px solid rgba(37, 99, 235, 0.15);
+            transition: var(--transition-default);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-tag:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px 0 rgba(251, 191, 36, 0.2);
+        }
+        
+        .skill-tag::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(251, 191, 36, 0.2), transparent);
+            transition: var(--transition-default);
+        }
+        
+        .skill-tag:hover::before {
+            left: 100%;
+        }
+        
+        .profile-ring {
+            position: relative;
+            padding: 12px;
+        }
+        
+        .profile-ring::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 2px dashed var(--gold);
+            border-radius: 9999px;
+            animation: rotate 25s linear infinite;
+            opacity: 0.7;
+        }
+        
+        @keyframes rotate { 
+            from { transform: rotate(0deg); } 
+            to { transform: rotate(360deg); } 
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--royal-blue), var(--indigo-dark));
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            font-weight: 600;
+            border-radius: 12px;
+            transition: var(--transition-default);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--gold), var(--royal-blue));
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+            transform: rotate(30deg);
+            transition: var(--transition-default);
+        }
+        
+        .btn-primary:hover::before {
+            animation: shine 1.5s;
+        }
+        
+        @keyframes shine {
+            0% { transform: rotate(30deg) translateX(-100%, -100%); }
+            100% { transform: rotate(30deg) translateX(100%, 100%); }
+        }
+        
+        .btn-outline {
+            border: 2px solid var(--gold);
+            background: transparent;
+            color: var(--gold);
+            padding: 12px 28px;
+            font-weight: 600;
+            border-radius: 12px;
+            transition: var(--transition-default);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-outline:hover {
+            background: var(--gold);
+            color: var(--background-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px 0 rgba(251, 191, 36, 0.3);
+        }
+        
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, var(--royal-blue), var(--gold), var(--indigo-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+        
+        .section-title span {
+            position: relative;
+        }
+        
+        .section-title span::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(to right, var(--royal-blue), var(--gold));
+            border-radius: 2px;
+        }
+        
+        .text-indigo {
+            color: var(--indigo-dark);
+        }
+        
+        .text-royal {
+            color: var(--royal-blue);
+        }
+        
+        .text-gold {
+            color: var(--gold);
+        }
+        
+        .bg-indigo-light {
+            background-color: rgba(30, 27, 75, 0.3);
+        }
+        
+        .bg-blue-light {
+            background-color: rgba(37, 99, 235, 0.1);
+        }
+        
+        .bg-gold-light {
+            background-color: rgba(251, 191, 36, 0.1);
+        }
+        
+        .hover-lift {
+            transition: var(--transition-default);
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-8px);
+        }
+        
+        .animate-delay-100 {
+            animation-delay: 100ms;
+        }
+        
+        .animate-delay-200 {
+            animation-delay: 200ms;
+        }
+        
+        .animate-delay-300 {
+            animation-delay: 300ms;
+        }
+        
+        .animate-delay-400 {
+            animation-delay: 400ms;
+        }
+        
+        .animate-delay-500 {
+            animation-delay: 500ms;
+        }
+        
+        .animate-delay-600 {
+            animation-delay: 600ms;
+        }
+        
+        .nav-link {
+            position: relative;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: var(--transition-default);
+        }
+        
+        .nav-link:hover {
+            color: var(--text-lighter);
+        }
+        
+        .nav-link.active {
+            color: var(--gold);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, var(--royal-blue), var(--gold));
+            transition: var(--transition-default);
+        }
+        
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .header-bg {
+            background: rgba(5, 5, 5, 0.7);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-medium);
+        }
+        
+        .section-bg {
+            background: rgba(255, 255, 255, 0.01);
+        }
+        
+        .icon-bg {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .icon-bg-indigo {
+            background: rgba(30, 27, 75, 0.2);
+            border: 1px solid rgba(30, 27, 75, 0.3);
+        }
+        
+        .icon-bg-blue {
+            background: rgba(37, 99, 235, 0.2);
+            border: 1px solid rgba(37, 99, 235, 0.3);
+        }
+        
+        .icon-bg-gold {
+            background: rgba(251, 191, 36, 0.2);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+        }
+        
+        .card-hover-lift {
+            transition: var(--transition-default);
+        }
+        
+        .card-hover-lift:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .section-title-smaller {
+            font-size: 1.875rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, var(--royal-blue), var(--gold), var(--indigo-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+        
+        .section-title-smaller span {
+            position: relative;
+        }
+        
+        .section-title-smaller span::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(to right, var(--royal-blue), var(--gold));
+            border-radius: 1.5px;
+        }
+        
+        .process-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 24px;
+            transition: var(--transition-default);
+        }
+        
+        .process-card:hover {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            border-color: var(--gold);
+            transform: translateY(-4px);
+        }
+        
+        .process-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .process-icon-indigo {
+            background: rgba(30, 27, 75, 0.2);
+            border: 1px solid rgba(30, 27, 75, 0.3);
+        }
+        
+        .process-icon-blue {
+            background: rgba(37, 99, 235, 0.2);
+            border: 1px solid rgba(37, 99, 235, 0.3);
+        }
+        
+        .process-icon-gold {
+            background: rgba(251, 191, 36, 0.2);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .badge-enterprise {
+            background: rgba(37, 99, 235, 0.15);
+            color: var(--royal-blue);
+            border: 1px solid rgba(37, 99, 235, 0.3);
+        }
+        
+        .badge-retail {
+            background: rgba(251, 191, 36, 0.15);
+            color: var(--gold);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+        }
+        
+        .badge-management {
+            background: rgba(30, 27, 75, 0.15);
+            color: var(--indigo-dark);
+            border: 1px solid rgba(30, 27, 75, 0.3);
+        }
+        
+        .badge-commercial {
+            background: rgba(0, 0, 0, 0.15);
+            color: var(--text-lighter);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .badge-service {
+            background: rgba(199, 210, 225, 0.15);
+            color: #64748b;
+            border: 1px solid rgba(199, 210, 225, 0.3);
+        }
+        
+        .badge-mobile {
+            background: rgba(49, 46, 129, 0.15);
+            color: #4f46e5;
+            border: 1px solid rgba(49, 46, 129, 0.3);
+        }
+    </style>
+</head>
+<body class="antialiased bg-indigo-gradient">
+    
+    <header class="fixed w-full top-0 z-50 header-bg border-b border-white/5">
+        <nav class="container mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="../index.html" class="text-2xl font-extrabold tracking-tighter text-white">JOY<span class="text-gold">.</span></a>
+            <div class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest text-gray-400">
+                <a href="../index.html#about" class="hover:text-amber-400 transition-colors nav-link">About</a>
+                <a href="../index.html#skills" class="hover:text-amber-400 transition-colors nav-link">Skills</a>
+                <a href="../index.html#projects" class="hover:text-amber-400 transition-colors nav-link">Work</a>
+                <a href="../index.html#contact" class="hover:text-amber-400 transition-colors nav-link">Contact</a>
+            </div>
+            <a href="mailto:joykamau123@gmail.com" class="bg-amber-400 text-black px-6 py-2 rounded-lg text-xs font-black uppercase">Hire Me</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="min-h-screen flex items-center pt-28 pb-12">
+            <div class="container mx-auto px-6">
+                <div class="space-y-6 text-center">
+                    <span class="text-blue-500 font-bold tracking-widest uppercase text-sm animate-delay-100">Project Detail</span>
+                    <h1 class="text-5xl font-black text-white leading-[0.9] tracking-tighter animate-delay-200">
+                        ERP System
+                    </h1>
+                    <p class="text-gray-400 text-lg max-w-xl leading-relaxed animate-delay-300">
+                        Integrated business management solution designed to streamline operations across departments.
+                    </p>
+                    <a href="../index.html#projects" class="btn-primary hover-lift animate-delay-400">
+                        Back to Projects
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 section-bg">
+            <div class="container mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-12 animate-delay-100">
+                    <div class="space-y-8">
+                        <h2 class="text-3xl font-black uppercase tracking-tighter section-title-smaller animate-delay-200">
+                            Project Overview
+                        </h2>
+                        <p class="text-gray-400 leading-relaxed mb-6 animate-delay-300">
+                            A comprehensive ERP (Enterprise Resource Planning) system that integrates core business processes including finance, HR, supply chain, and customer relationship management into a unified platform.
+                        </p>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="process-icon process-icon-indigo mb-2">
+                                    <i data-lucide="code" class="text-amber-400"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-lg mb-1">Technologies Used</h3>
+                                    <p class="text-gray-400">Python, Django, PostgreSQL, React, Tailwind CSS</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="process-icon process-icon-blue mb-2">
+                                    <i data-lucide="box" class="text-amber-400"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-lg mb-1">Key Features</h3>
+                                    <p class="text-gray-400">• Financial Management<br>• Inventory Control<br>• HR & Payroll<br>• CRM Module<br>• Reporting & Analytics</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="process-icon process-icon-users mb-2">
+                                    <i data-lucide="users" class="text-amber-400"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-lg mb-1">Client</h3>
+                                    <p class="text-gray-400">Manufacturing Company, Nairobi</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center">
+                        <div class="w-full max-w-xl">
+                            <div class="aspect-video bg-gray-200 overflow-hidden rounded-2xl card-hover-lift">
+                                <img src="https://placehold.co/800x600/1e1b4b/ffffff?text=ERP+System+Dashboard" class="w-full h-full object-cover rounded-2xl">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 section-bg">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-black mb-8 text-center uppercase tracking-tighter section-title animate-delay-100">
+                    Development Process
+                </h2>
+                <div class="grid md:grid-cols-3 gap-8 text-center animate-delay-200">
+                    <div class="process-card hover-lift">
+                        <div class="process-icon process-icon-indigo mb-4">
+                            <i data-lucide="layout" class="text-amber-400"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Planning</h3>
+                        <p class="text-xs text-gray-500">Requirements gathering and system architecture design</p>
+                    </div>
+                    <div class="process-card hover-lift">
+                        <div class="process-icon process-icon-blue mb-4">
+                            <i data-lucide="code-2" class="text-amber-400"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Development</h3>
+                        <p class="text-xs text-gray-500">Agile methodology with regular sprint reviews</p>
+                    </div>
+                    <div class="process-card hover-lift">
+                        <div class="process-icon process-icon-gold mb-4">
+                            <i data-lucide="check-circle" class="text-amber-400"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Deployment</h3>
+                        <p class="text-xs text-gray-500">Successful launch with user training and support</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-12 border-t border-white/5 text-center text-[10px] text-gray-700 uppercase tracking-widest">
+        &copy; 2026 Joy Kamau. All rights reserved.
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

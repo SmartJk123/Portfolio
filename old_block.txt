@@ -1,0 +1,103 @@
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 animate-delay-200">
+
+                    <!-- Card 1 — ERP System -->
+                    <a href="projects/erp-system.html"
+                       class="group block rounded-2xl overflow-hidden shadow-xl cursor-pointer hover-lift transition-all duration-500 hover:shadow-2xl
+                              bg-[#12102a] border border-[#2a2560] hover:border-amber-400/40 flex flex-col">
+
+                        <!-- Image Area — coloured gradient banner + icon -->
+                        <div class="relative aspect-[16/10] overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-br from-indigo-950 via-[#1e1b4b] to-[#1e3a6e]">
+                            </div>
+                            <!-- ERP icon watermark -->
+                            <div class="absolute inset-0 flex items-center justify-center opacity-15 group-hover:opacity-25 transition-opacity duration-500">
+                                <svg viewBox="0 0 80 80" width="64" height="64">
+                                    <rect x="8" y="8" width="64" height="64" rx="10" fill="none" stroke="white" stroke-width="3"/>
+                                    <line x1="8" y1="28" x2="72" y2="28" stroke="white" stroke-width="3"/>
+                                    <line x1="8" y1="48" x2="72" y2="48" stroke="white" stroke-width="3"/>
+                                    <line x1="30" y1="28" x2="30" y2="72" stroke="white" stroke-width="3"/>
+                                    <line x1="50" y1="28" x2="50" y2="72" stroke="white" stroke-width="3"/>
+                                </svg>
+                            </div>
+                            <!-- Gold corner accent -->
+                            <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-amber-400/15 to-transparent"></div>
+                        </div>
+
+                        <!-- Card Body -->
+                        <div class="p-6 flex flex-col flex-grow gap-3">
+                            <span class="text-[10px] font-black uppercase tracking-[0.18em] text-indigo-400 bg-indigo-500/12 border border-indigo-500/20 px-3 py-1 rounded-full w-fit">Enterprise</span>
+                            <h3 class="text-xl font-extrabold text-white tracking-tight leading-snug">ERP System</h3>
+                            <p class="text-sm text-[rgba(224,223,248,0.65)] leading-relaxed">Integrated business management platform with real-time analytics &amp; workflow automation.</p>
+                            <div class="mt-auto pt-5 flex items-center justify-between border-t border-white/8">
+                                <span class="text-[11px] text-muted font-medium">Django · React</span>
+                                <span class="inline-flex items-center gap-1.5 text-[11px] font-black uppercase tracking-[0.15em] text-amber-400 group-hover:gap-2.5 transition-all duration-300">
+                                    Explore More
+                                    <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                                </span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Card 2 — E-Commerce -->
+                    <a href="projects/ecommerce.html"
+                       class="group block rounded-2xl overflow-hidden shadow-xl cursor-pointer hover-lift transition-all duration-500 hover:shadow-2xl
+                              bg-[#12102a] border border-[#2a2560] hover:border-amber-400/40 flex flex-col">
+                        <div class="relative aspect-[16/10] overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-br from-[#1a1500] via-[#12102a] to-[#2a1800]">
+                            </div>
+                            <div class="absolute inset-0 flex items-center justify-center opacity-15 group-hover:opacity-25 transition-opacity duration-500">
+                                <svg viewBox="0 0 80 80" width="64" height="64">
+                                    <path d="M12 62V28l28-20 28 20v34H12z" fill="none" stroke="white" stroke-width="3"/>
+                                    <circle cx="40" cy="45" r="10" fill="none" stroke="white" stroke-width="3"/>
+                                    <path d="M12 62l28-34 28 34" fill="none" stroke="white" stroke-width="3" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-amber-400/15 to-transparent"></div>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow gap-3">
+                            <span class="text-[10px] font-black uppercase tracking-[0.18em] text-amber-400 bg-amber-500/12 border border-amber-500/20 px-3 py-1 rounded-full w-fit">Retail Tech</span>
+                            <h3 class="text-xl font-extrabold text-white tracking-tight leading-snug">E-Commerce Platform</h3>
+                            <p class="text-sm text-[rgba(224,223,248,0.65)] leading-relaxed">Scalable retail solution with cart, checkout flows and inventory management.</p>
+                            <div class="mt-auto pt-5 flex items-center justify-between border-t border-white/8">
+                                <span class="text-[11px] text-muted font-medium">React · Django</span>
+                                <span class="inline-flex items-center gap-1.5 text-[11px] font-black uppercase tracking-[0.15em] text-amber-400 group-hover:gap-2.5 transition-all duration-300">
+                                    Explore More
+                                    <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                                </span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Card 3 — SmartSpace -->
+                    <a href="projects/smartspace.html"
+                       class="group block rounded-2xl overflow-hidden shadow-xl cursor-pointer hover-lift transition-all duration-500 hover:shadow-2xl
+                              bg-[#12102a] border border-[#2a2560] hover:border-amber-400/40 flex flex-col">
+                        <div class="relative aspect-[16/10] overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-br from-indigo-950 via-[#1e1b4b] to-[#1a2a4a]">
+                            </div>
+                            <div class="absolute inset-0 flex items-center justify-center opacity-15 group-hover:opacity-25 transition-opacity duration-500">
+                                <svg viewBox="0 0 80 80" width="64" height="64">
+                                    <rect x="6" y="20" width="68" height="50" rx="5" fill="none" stroke="white" stroke-width="3"/>
+                                    <path d="M16 55v-8l20-12 20 12v8" fill="none" stroke="white" stroke-width="3" stroke-linejoin="round"/>
+                                    <circle cx="40" cy="30" r="7" fill="none" stroke="white" stroke-width="3"/>
+                                </svg>
+                            </div>
+                            <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-amber-400/15 to-transparent"></div>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow gap-3">
+                            <span class="text-[10px] font-black uppercase tracking-[0.18em] text-indigo-400 bg-indigo-500/12 border border-indigo-500/20 px-3 py-1 rounded-full w-fit">Management</span>
+                            <h3 class="text-xl font-extrabold text-white tracking-tight leading-snug">SmartSpace Platform</h3>
+                            <p class="text-sm text-[rgba(224,223,248,0.65)] leading-relaxed">Residential management system built with Mongo DB backend and rich React front-end best for residential managenent system.</p>
+                            <div class="mt-auto pt-5 flex items-center justify-between border-t border-white/8">
+                                <span class="text-[11px] text-muted font-medium">Django · React</span>
+                                <span class="inline-flex items-center gap-1.5 text-[11px] font-black uppercase tracking-[0.15em] text-amber-400 group-hover:gap-2.5 transition-all duration-300">
+                                    Explore More
+                                    <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                                </span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Card 4 — Tunebox -->
+                    <a href="projects/tunebox.html"
+                       class="group block rounded-2xl overflow-hidden shadow-xl cursor-pointer hover-lift transition-all duration-500 hover:shadow-2xl

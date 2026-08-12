@@ -16,6 +16,9 @@ build/
 *.swp
 *.swo
 
+# Agent tooling
+.opencode/
+
 # OS files
 .DS_Store
 Thumbs.db
