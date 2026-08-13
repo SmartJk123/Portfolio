@@ -162,6 +162,27 @@
             height: 2px;
             background: linear-gradient(to right, transparent 5%, var(--gold) 30%, var(--royal-blue) 70%, transparent 95%);
         }
+
+        .servicesSwiper .swiper-slide {
+            height: auto;
+            display: flex;
+        }
+
+        .servicesSwiper .swiper-slide .service-card {
+            width: 100%;
+        }
+
+        .servicesSwiper .swiper-pagination-bullet {
+            width: 10px;
+            height: 10px;
+            background: rgba(251, 191, 36, 0.35);
+            opacity: 1;
+        }
+
+        .servicesSwiper .swiper-pagination-bullet-active {
+            background: var(--gold);
+            box-shadow: 0 0 10px rgba(251, 191, 36, 0.6);
+        }
         
 /* ══════════════════════════════════════
             REVEAL ANIMATIONS — reveal/hide on scroll
@@ -728,48 +749,62 @@
             </div>
         </section>
 
-<section style="background-image: url('images/bg4.jpg');" class="image-strip py-24 bg-cover bg-center bg-no-repeat relative">
+<section id="services" style="background-image: url('images/bg4.jpg');" class="image-strip py-24 bg-cover bg-center bg-no-repeat relative">
     <div class="container mx-auto px-6 relative z-10">
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center items-stretch">
-            
-            <div class="service-card p-8 glass-card-hover rounded-xl luxury-card flex flex-col text-center">
-                <div class="w-12 h-12 rounded-full icon-bg icon-bg-indigo mb-4 mx-auto flex items-center justify-center">
-                    <i data-lucide="layout" class="text-gold w-5 h-5"></i>
-                </div>
-                <div>
-                    <h3 class="font-bold text-lg mb-2 text-white">Search Engine Optimization (SEO)</h3>
-                    <p class="text-xs text-secondary leading-relaxed">
-                        Optimizing websites for search engines to improve search engine rankings, visibility, and drive high-quality organic traffic.
-                    </p>
-                </div>
-            </div>
+        <h2 class="text-3xl font-black mb-12 text-center uppercase tracking-tighter section-title animate-delay-100">
+            What I <span class="text-gold">Do</span>
+        </h2>
 
-            <div class="service-card p-8 glass-card-hover rounded-xl luxury-card flex flex-col text-center">
-                <div class="w-12 h-12 rounded-full icon-bg icon-bg-blue mb-4 mx-auto flex items-center justify-center">
-                    <i data-lucide="code-2" class="text-gold w-5 h-5"></i>
-                </div>
-                <div>
-                    <h3 class="font-bold text-lg mb-2 text-white">Full-Stack Web Development</h3>
-                    <p class="text-xs text-secondary leading-relaxed">
-                        Clean code implementation using Python, Django, and modern React for fast, responsive, and secure digital platforms.
-                    </p>
-                </div>
-            </div>
+        <div class="swiper servicesSwiper overflow-hidden py-4">
+            <div class="swiper-wrapper ease-linear items-stretch">
 
-            <div class="service-card p-8 glass-card-hover rounded-xl luxury-card flex flex-col text-center">
-                <div class="w-12 h-12 rounded-full icon-bg icon-bg-gold mb-4 mx-auto flex items-center justify-center">
-                    <i data-lucide="trending-up" class="text-gold w-5 h-5"></i>
+                <div class="swiper-slide h-auto">
+                    <div class="service-card h-full p-8 glass-card-hover rounded-xl luxury-card flex flex-col text-center">
+                        <div class="w-12 h-12 rounded-full icon-bg icon-bg-indigo mb-4 mx-auto flex items-center justify-center">
+                            <i data-lucide="layout" class="text-gold w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg mb-2 text-white">Search Engine Optimization (SEO)</h3>
+                            <p class="text-xs text-secondary leading-relaxed">
+                                Optimizing websites for search engines to improve search engine rankings, visibility, and drive high-quality organic traffic.
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <h3 class="font-bold text-lg mb-2 text-white">Business Analysis</h3>
-                    <p class="text-xs text-secondary leading-relaxed">
-                        Leveraging Bachelors in Business Information Technology insights to seamlessly align technical architectures with bottom-line commercial goals.
-                    </p>
-                </div>
-            </div>
 
-        </div></div></section>
+                <div class="swiper-slide h-auto">
+                    <div class="service-card h-full p-8 glass-card-hover rounded-xl luxury-card flex flex-col text-center">
+                        <div class="w-12 h-12 rounded-full icon-bg icon-bg-blue mb-4 mx-auto flex items-center justify-center">
+                            <i data-lucide="code-2" class="text-gold w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg mb-2 text-white">Full-Stack Web Development</h3>
+                            <p class="text-xs text-secondary leading-relaxed">
+                                Clean code implementation using Python, Django, and modern React for fast, responsive, and secure digital platforms.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide h-auto">
+                    <div class="service-card h-full p-8 glass-card-hover rounded-xl luxury-card flex flex-col text-center">
+                        <div class="w-12 h-12 rounded-full icon-bg icon-bg-gold mb-4 mx-auto flex items-center justify-center">
+                            <i data-lucide="trending-up" class="text-gold w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg mb-2 text-white">Business Analysis</h3>
+                            <p class="text-xs text-secondary leading-relaxed">
+                                Leveraging Bachelors in Business Information Technology insights to seamlessly align technical architectures with bottom-line commercial goals.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="swiper-pagination mt-8"></div>
+        </div>
+    </div>
+</section>
 
         <section id="skills" class="py-24 section-bg">
             <div class="container mx-auto px-6">
@@ -1699,6 +1734,32 @@
                 1024: {
                     slidesPerView: 6,
                     spaceBetween: 60,
+                }
+            }
+        });
+        // Initialize Swiper for services / "What I Do" carousel
+        const servicesSwiper = new Swiper('.servicesSwiper', {
+            loop: false,
+            rewind: true,
+            grabCursor: true,
+            slidesPerView: 1,
+            spaceBetween: 24,
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.servicesSwiper .swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 28,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 32,
                 }
             }
         });
