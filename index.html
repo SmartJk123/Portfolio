@@ -604,9 +604,36 @@
         }
         
         .header-bg {
-            background: rgba(8, 7, 20, 0.82);
+            position: relative;
+            background: linear-gradient(90deg, rgba(30, 27, 75, 0.96) 0%, rgba(49, 46, 129, 0.96) 45%, rgba(37, 99, 235, 0.96) 100%);
             backdrop-filter: blur(24px);
-            border-bottom: 1px solid rgba(251, 191, 36, 0.12);
+            border-bottom: none;
+            box-shadow: 0 6px 24px rgba(37, 99, 235, 0.16);
+        }
+
+        .header-bg::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent 0%, var(--gold) 20%, var(--royal-blue) 55%, var(--gold) 85%, transparent 100%);
+        }
+
+        .gradient-footer {
+            position: relative;
+            background: linear-gradient(90deg, var(--indigo-dark) 0%, var(--indigo-mid) 45%, var(--royal-blue) 100%);
+        }
+
+        .gradient-footer::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent 0%, var(--gold) 25%, var(--royal-blue) 55%, var(--gold) 80%, transparent 100%);
         }
         
         .icon-bg {
@@ -653,23 +680,23 @@
 
 <main>
         <!-- Hero Section -->
-        <section class="min-h-screen flex items-center pt-28 pb-12">
-            <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
-                <div class="space-y-6">
-                    <span class="text-gold font-bold tracking-widest uppercase text-sm animate-delay-100">Hello! I'm <span class="text-white">Joy Kamau</span></span>
-                    <h1 class="text-6xl lg:text-8xl font-black text-white leading-[0.9] tracking-tighter animate-delay-200">
+        <section class="min-h-screen flex items-center pt-24 sm:pt-28 pb-10 sm:pb-12">
+            <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                <div class="space-y-4 sm:space-y-6">
+                    <span class="text-gold font-bold tracking-widest uppercase text-xs sm:text-sm animate-delay-100">Hello! I'm <span class="text-white">Joy Kamau</span></span>
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black text-white leading-[0.95] sm:leading-[0.9] tracking-tighter animate-delay-200">
                         A Software <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-amber-400 animate-delay-300">Consultant Developer & Designer</span> 
                     </h1>
-                    <p class="text-secondary text-lg max-w-lg leading-relaxed animate-delay-400">
+                    <p class="text-secondary text-base sm:text-lg max-w-lg leading-relaxed animate-delay-400">
                         I design and build beautiful, modern, and user-friendly websites. I am passionate about creating smart, innovative solutions that bridge the gap between business and technology.
                     </p>
-                    <div class="flex items-center space-x-6 pt-4 animate-delay-500">
+                    <div class="flex flex-wrap items-center gap-4 pt-4 animate-delay-500">
                         <a href="#projects" class="btn-primary hover-lift">View My Work</a>
                         <a href="images/resume.pdf" class="btn-outline hover-lift">View CV</a>
                     </div>
                 </div>
                 <div class="flex justify-center">
-                    <div class="profile-ring w-72 h-72 md:w-96 md:h-96 animate-delay-600">
+                    <div class="profile-ring w-48 h-48 sm:w-56 sm:h-56 md:w-80 md:h-80 lg:w-96 lg:h-96 animate-delay-600">
                         <img src="images/jk1.jpeg" alt="Joy Kamau" class="w-full h-full object-cover rounded-full shadow-2xl border-2 border-amber-400/30">
                     </div>
                 </div>
@@ -689,10 +716,6 @@
                         <p class="text-secondary leading-relaxed animate-delay-300">
                             With a knack for connecting big ideas to practical solutions, I bring a well-rounded perspective shaped by both technical skills and business insight. Whether it's crafting user experiences or solving problems, I'm driven by curiosity, detail and a desire to create impact.
                         </p>
-                        <div class="flex items-center space-x-6 pt-8 animate-delay-400">
-                            <a href="#projects" class="btn-primary hover-lift">View My Work</a>
-                            <a href="images/resume.pdf" class="btn-outline hover-lift">Download Resume</a>
-                        </div>
                     </div>
                     <div class="glass-card-hover p-8 rounded-2xl border-l-4 border-l-amber-400 animate-delay-500">
 <p class="text-secondary leading-relaxed mb-6 animate-delay-200">
@@ -880,9 +903,10 @@
                 <div class="swiper-slide"><img src="https://skillicons.dev/icons?i=figma&theme=dark" alt="Figma"></div>
                 <div class="swiper-slide"><img src="https://skillicons.dev/icons?i=php&theme=dark" alt="PHP"></div>
                 <div class="swiper-slide"><img src="https://skillicons.dev/icons?i=mysql&theme=dark" alt="MySQL"></div>
-                <div class="swiper-slide"><span class="brand-logo text-3xl"><span class="text-[#52c5d0]">n</span><span class="text-[#b24b99]">c</span><span class="text-[#52c5d0]">b</span><span class="text-[#b24b99]">a</span></span></div>
-                <div class="swiper-slide"><img src="images/tunebox-logo.png" alt="TuneBox"></div>
-                <div class="swiper-slide"><span class="brand-logo text-base tracking-tight"><span class="text-orange-500">WASH</span><span class="text-white">DRY</span><span class="ml-1 text-sky-400">CLEANERS</span></span></div>
+                <div class="swiper-slide"><img src="https://skillicons.dev/icons?i=postgres&theme=dark" alt="PostgreSQL"></div>
+                <div class="swiper-slide"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg" alt="Oracle Database"></div>
+                <div class="swiper-slide"><img src="https://skillicons.dev/icons?i=angular&theme=dark" alt="Angular"></div>
+                <div class="swiper-slide"><span class="brand-logo text-3xl text-white">ncba</span></div>
             </div>
             <div class="swiper-wrapper legacy-logos hidden">
                 
@@ -1177,52 +1201,69 @@
                 <div class="max-w-4xl mx-auto space-y-8 animate-delay-200">
                     <!-- Experience Card 1 -->
                     <div class="glass-card-hover p-6 rounded-2xl luxury-card">
-                        <h3 class="text-base font-black uppercase tracking-[0.12em] text-gold mb-4">Senior Software Developer</h3>
-                        <p class="text-sm text-secondary mb-2">TechSolutions Inc. | Nairobi, Kenya</p>
-                        <p class="text-xs text-gold font-semibold mb-3">Jan 2023 - Present</p>
+                        <h3 class="text-base font-black uppercase tracking-[0.12em] text-gold mb-4">Data Entry Intern</h3>
+                        <p class="text-sm text-secondary mb-2">Kasha Global Inc | Remote</p>
+                        <p class="text-xs text-gold font-semibold mb-3">Oct 2025 - Nov 2025</p>
                         <p class="text-[11px] text-secondary leading-relaxed mb-4">
-                            Led development of enterprise-scale applications using Django and React, managing a team of 4 developers. Improved system performance by 40% through optimization and microservices architecture.
+                            During my data entry internship, I was responsible for extracting and organizing key information for pharmacies and hospitals, including facility names, GPS coordinates, and unique identifiers (UIDs) of the riders. The role required a high level of accuracy and attention to detail as I verified data from multiple sources and ensured every entry was correct. Throughout the internship, I strengthened my skills in data verification, time management, consistency, and working with spreadsheets and digital mapping tools, all while handling large datasets with professionalism and reliability.
                         </p>
                         <div class="flex flex-wrap gap-3">
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Django</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">React</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Python</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">AWS</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Docker</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Data Verification</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Spreadsheets</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Digital Mapping</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Time Management</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Attention to Detail</span>
                         </div>
                     </div>
                     
                     <!-- Experience Card 2 -->
                     <div class="glass-card-hover p-6 rounded-2xl luxury-card">
-                        <h3 class="text-base font-black uppercase tracking-[0.12em] text-gold mb-4">Full Stack Developer</h3>
-                        <p class="text-sm text-secondary mb-2">DigitalCraft Agency | Nairobi, Kenya</p>
-                        <p class="text-xs text-gold font-semibold mb-3">Mar 2021 - Dec 2022</p>
+                        <h3 class="text-base font-black uppercase tracking-[0.12em] text-gold mb-4">Business Information Technology Attachee</h3>
+                        <p class="text-sm text-secondary mb-2">Samchi Group | Absa Tower, Loita Street, Nairobi</p>
+                        <p class="text-xs text-gold font-semibold mb-3">Jan 2025 - Apr 2025</p>
                         <p class="text-[11px] text-secondary leading-relaxed mb-4">
-                            Developed and maintained client websites and web applications using modern JavaScript frameworks. Collaborated with designers to implement pixel-perfect UI/UX designs.
+                            During my attachment at Samchi Group, I gained practical experience supporting telecommunications, micro-finance, and real estate. I worked extensively with QuickBooks for financial data entry and reporting, assisted in tax compliance via the KRA iTax platform, managed customer data on the Safaricom Dealer Portal, and supported employee registration on SHA and NSSF portals. This attachment enhanced my technical skills in business software and compliance systems while strengthening my teamwork, communication, and problem-solving abilities. Overall, it provided me with valuable insight into corporate operations within a diverse business environment.
                         </p>
                         <div class="flex flex-wrap gap-3">
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">JavaScript</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Vue.js</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Node.js</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">MongoDB</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Git</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">QuickBooks</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">KRA iTax</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Safaricom Dealer Portal</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">SHA &amp; NSSF</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Compliance</span>
                         </div>
                     </div>
                     
                     <!-- Experience Card 3 -->
                     <div class="glass-card-hover p-6 rounded-2xl luxury-card">
-                        <h3 class="text-base font-black uppercase tracking-[0.12em] text-gold mb-4">Junior Web Developer</h3>
-                        <p class="text-sm text-secondary mb-2">WebStart Solutions | Nairobi, Kenya</p>
-                        <p class="text-xs text-gold font-semibold mb-3">Jun 2020 - Feb 2021</p>
+                        <h3 class="text-base font-black uppercase tracking-[0.12em] text-gold mb-4">Software Designer</h3>
+                        <p class="text-sm text-secondary mb-2">Tunebox Photobooth | Nairobi, Kenya</p>
+                        <p class="text-xs text-gold font-semibold mb-3">Sep 2023 - Dec 2024</p>
                         <p class="text-[11px] text-secondary leading-relaxed mb-4">
-                            Assisted in building responsive websites using HTML, CSS, and JavaScript. Participated in code reviews and learned best practices in web development.
+                            Researched, prototyped and developed the website system and dashboard, meeting all company's requirements and deadlines. This improved the search engine optimization which boosted the marketing &amp; sales by 40% from the previous year. Implemented new features and functionalities to improve user experience and increase efficiency. The booking system made it easy for clients to book the photobooth for their events. The database management system simplified the operation manager's work in planning and scheduling for the events for clients and sending them emails.
                         </p>
                         <div class="flex flex-wrap gap-3">
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">HTML</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">CSS</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">JavaScript</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Bootstrap</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Photoshop</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Web Development</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Dashboard Design</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">SEO</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Booking System</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Database Management</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Experience Card 4 -->
+                    <div class="glass-card-hover p-6 rounded-2xl luxury-card">
+                        <h3 class="text-base font-black uppercase tracking-[0.12em] text-gold mb-4">ICT Clerk</h3>
+                        <p class="text-sm text-secondary mb-2">Independent Electoral and Boundaries Commission | Nairobi, Kenya</p>
+                        <p class="text-xs text-gold font-semibold mb-3">Jul 2022 - Aug 2022</p>
+                        <p class="text-[11px] text-secondary leading-relaxed mb-4">
+                            As an ICT Clerk, I was responsible for the setup, operation, and management of the Kenya Integrated Election Management System (KIEMS) kits at the polling station level. My role involved biometric voter verification, secure electronic transmission of results, and first-line troubleshooting of technical issues to ensure seamless polling day operations. I worked closely with the Presiding Officer and other officials to maintain data integrity and uphold the transparency of the electoral process. This position required high attention to detail, reliability, and technical competence.
+                        </p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">KIEMS</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Biometric Verification</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Technical Support</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Data Integrity</span>
+                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Troubleshooting</span>
                         </div>
                     </div>
                 </div>
@@ -1324,6 +1365,18 @@
                     <h3 class="font-extrabold text-sm tracking-wide text-white leading-snug mb-1.5">Bitcoin Diploma</h3>
                     <p class="text-xs text-gold font-semibold mb-3">My First Bitcoin / The Core</p>
                     <p class="text-[11px] text-secondary leading-relaxed mb-4">Certificate of completion for the Bitcoin Diploma online course.</p>
+                    <div class="pt-3 border-t border-white/8 text-[11px] font-black uppercase tracking-widest text-amber-400">View certificate ↗</div>
+                </div>
+            </a>
+            <a href="images/Forward.pdf" target="_blank" rel="noopener" class="group block glass-card-hover rounded-2xl luxury-card overflow-hidden hover-lift">
+                <div class="relative aspect-[4/3] overflow-hidden bg-slate-950">
+                    <img src="images/forward-certificate-preview.png" alt="McKinsey Forward Program certificate awarded to Joy Kamau" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-amber-400 text-[#1e1b4b]">McKinsey</span>
+                </div>
+                <div class="p-6">
+                    <h3 class="font-extrabold text-sm tracking-wide text-white leading-snug mb-1.5">Forward Program</h3>
+                    <p class="text-xs text-gold font-semibold mb-3">McKinsey &amp; Company</p>
+                    <p class="text-[11px] text-secondary leading-relaxed mb-4">Career-readiness programme covering professional skills, problem-solving, and digital essentials.</p>
                     <div class="pt-3 border-t border-white/8 text-[11px] font-black uppercase tracking-widest text-amber-400">View certificate ↗</div>
                 </div>
             </a>
@@ -1607,7 +1660,7 @@
         </section>
     </main>
 
-    <footer class="py-12 border-t border-white/5 text-center text-[10px] text-gray-700 uppercase tracking-widest">
+    <footer class="gradient-footer py-12 text-center text-[10px] text-white/85 uppercase tracking-widest">
         &copy; 2026 Joy Kamau. All rights reserved.
     </footer>
 
