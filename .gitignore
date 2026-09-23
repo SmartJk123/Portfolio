@@ -56,3 +56,15 @@ logs/
 *.flv
 *.webm
 *.m4v
+# Original certificates: keep off the public site and repo.
+# The site only uses the watermarked copies in images/certificates/.
+IBMDesignPractitioner.pdf
+Joy Kamau Certification .pdf
+images/Forward.pdf
+images/alx-ai-career-essentials-certificate.png
+images/bitcoin-diploma-certificate.jpg
+images/forward-certificate-preview.png
+images/ibm-design-practitioner-certificate-preview.jpg
+images/ibm-design-practitioner-certificate-preview.png
+images/joy-kamau-certificate-preview.jpg
+images/joy-kamau-certificate-preview.png

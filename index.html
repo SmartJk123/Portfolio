@@ -172,17 +172,7 @@
             width: 100%;
         }
 
-        .servicesSwiper .swiper-pagination-bullet {
-            width: 10px;
-            height: 10px;
-            background: rgba(251, 191, 36, 0.35);
-            opacity: 1;
-        }
 
-        .servicesSwiper .swiper-pagination-bullet-active {
-            background: var(--gold);
-            box-shadow: 0 0 10px rgba(251, 191, 36, 0.6);
-        }
         
 /* ══════════════════════════════════════
             REVEAL ANIMATIONS — reveal/hide on scroll
@@ -655,6 +645,205 @@
             background: rgba(251, 191, 36, 0.2);
             border: 1px solid rgba(251, 191, 36, 0.3);
         }
+
+        /* ── WHAT I DO CAROUSEL ── */
+        .services-carousel {
+            padding: 0 3.5rem;
+        }
+
+        .services-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 20;
+            width: 44px;
+            height: 44px;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            background: rgba(30, 27, 75, 0.75);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            transition: var(--transition-default);
+        }
+
+        .services-nav:hover {
+            background: var(--gold);
+            color: var(--text-dark);
+            box-shadow: 0 0 18px rgba(251, 191, 36, 0.45);
+        }
+
+        .services-prev { left: 0; }
+        .services-next { right: 0; }
+
+        @media (max-width: 640px) {
+            .services-carousel { padding: 0; }
+            .services-nav { display: none; }
+        }
+
+        .service-chips {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(251, 191, 36, 0.14);
+            width: 100%;
+        }
+
+        .service-chip {
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 0.3rem 0.7rem;
+            border-radius: 9999px;
+            color: var(--gold-soft);
+            background: rgba(251, 191, 36, 0.1);
+            border: 1px solid rgba(251, 191, 36, 0.25);
+        }
+
+        .services-pagination {
+            position: static;
+            text-align: center;
+        }
+
+        .services-pagination .swiper-pagination-bullet {
+            width: 10px;
+            height: 10px;
+            background: rgba(251, 191, 36, 0.35);
+            opacity: 1;
+        }
+
+        .services-pagination .swiper-pagination-bullet-active {
+            width: 26px;
+            border-radius: 9999px;
+            background: var(--gold);
+            box-shadow: 0 0 10px rgba(251, 191, 36, 0.6);
+        }
+
+        /* Solid glass surface so each service reads as a distinct card. */
+        .servicesSwiper .service-card {
+            background: linear-gradient(160deg, rgba(49, 46, 129, 0.72), rgba(15, 14, 26, 0.82));
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 12px 32px rgba(8, 7, 20, 0.35);
+            justify-content: flex-start;
+        }
+
+        .servicesSwiper .service-card .icon-bg {
+            background: rgba(251, 191, 36, 0.14);
+            border: 1px solid rgba(251, 191, 36, 0.35);
+        }
+
+        /* ── SKILL ICONS ── */
+        .skill-icon {
+            width: 18px;
+            height: 18px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        /* Monochrome dark logos (Django, GitHub, AWS, Solidity) turned white for the dark theme. */
+        .skill-icon--light {
+            filter: brightness(0) invert(1);
+        }
+
+        .skill-fa {
+            width: 18px;
+            text-align: center;
+            color: var(--gold);
+            font-size: 0.85rem;
+        }
+
+        .skill-group-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            background: rgba(251, 191, 36, 0.14);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+        }
+
+        /* ── CERTIFICATE VIEWER (view only) ── */
+        .cert-card {
+            cursor: zoom-in;
+            -webkit-touch-callout: none;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .cert-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            -webkit-touch-callout: none;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .cert-modal.hidden {
+            display: none;
+        }
+
+        .cert-modal__backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(8, 7, 20, 0.88);
+            backdrop-filter: blur(6px);
+        }
+
+        .cert-modal__panel {
+            position: relative;
+            width: min(960px, 100%);
+            max-height: 92vh;
+            padding: 1.25rem;
+            border-radius: 1rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .cert-modal__close {
+            width: 36px;
+            height: 36px;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            border: 1px solid var(--glass-border);
+        }
+
+        /* Rendered as a CSS background, not an <img>, so there is no "Save image as" target. */
+        .cert-modal__frame {
+            position: relative;
+            width: 100%;
+            height: min(72vh, 680px);
+            background-color: #0b0a17;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            border-radius: 0.75rem;
+            overflow: hidden;
+        }
+
+        @media print {
+            .cert-card img,
+            .cert-modal {
+                visibility: hidden !important;
+            }
+        }
     </style>
 </head>
 <body class="antialiased bg-indigo-gradient">
@@ -724,161 +913,249 @@
 
 <section id="services" style="background-image: url('images/bg4.jpg');" class="image-strip py-24 bg-cover bg-center bg-no-repeat relative">
     <div class="container mx-auto px-6 relative z-10">
-        <h2 class="text-3xl font-black mb-12 text-center uppercase tracking-tighter section-title animate-delay-100">
+        <h2 class="text-3xl font-black mb-4 text-center uppercase tracking-tighter section-title animate-delay-100">
             What I <span class="text-gold">Do</span>
         </h2>
+        <p class="text-sm text-secondary text-center max-w-2xl mx-auto mb-12">
+            End-to-end digital solutions, from strategy and analysis to engineering, systems, and growth.
+        </p>
 
-        <div class="swiper servicesSwiper overflow-hidden py-4">
-            <div class="swiper-wrapper ease-linear items-stretch">
+        <div class="services-carousel relative">
+            <button type="button" class="services-nav services-prev" aria-label="Previous service">
+                <i data-lucide="chevron-left" class="w-5 h-5"></i>
+            </button>
 
+            <div class="swiper servicesSwiper overflow-hidden py-4">
+                <div class="swiper-wrapper items-stretch">
                 <div class="swiper-slide h-auto">
-                    <div class="service-card h-full p-8 glass-card-hover rounded-xl luxury-card flex flex-col text-center">
-                        <div class="w-12 h-12 rounded-full icon-bg icon-bg-indigo mb-4 mx-auto flex items-center justify-center">
-                            <i data-lucide="layout" class="text-gold w-5 h-5"></i>
+                    <div class="service-card h-full p-8 glass-card-hover rounded-2xl luxury-card flex flex-col text-center">
+                        <div class="icon-bg icon-bg-blue mx-auto">
+                            <i data-lucide="code" class="text-gold w-6 h-6"></i>
                         </div>
-                        <div>
-                            <h3 class="font-bold text-lg mb-2 text-white">Search Engine Optimization (SEO)</h3>
-                            <p class="text-xs text-secondary leading-relaxed">
-                                Optimizing websites for search engines to improve search engine rankings, visibility, and drive high-quality organic traffic.
-                            </p>
+                        <h3 class="font-bold text-lg mb-3 text-white">Full-Stack Web Development</h3>
+                        <p class="text-xs text-secondary leading-relaxed mb-6">Clean code implementation using Python, Django, and modern React for fast, responsive, and secure digital platforms.</p>
+                        <div class="service-chips mt-auto"><span class="service-chip">Python</span><span class="service-chip">Django</span><span class="service-chip">React</span><span class="service-chip">Node.js</span><span class="service-chip">Laravel</span></div>
+                    </div>
+                </div>
+                <div class="swiper-slide h-auto">
+                    <div class="service-card h-full p-8 glass-card-hover rounded-2xl luxury-card flex flex-col text-center">
+                        <div class="icon-bg icon-bg-indigo mx-auto">
+                            <i data-lucide="terminal" class="text-gold w-6 h-6"></i>
                         </div>
+                        <h3 class="font-bold text-lg mb-3 text-white">Software Engineering</h3>
+                        <p class="text-xs text-secondary leading-relaxed mb-6">Designing, building, and testing maintainable software across the full SDLC with Java, Spring Boot, Python, and PHP, following MVC architecture and clean, well-documented code.</p>
+                        <div class="service-chips mt-auto"><span class="service-chip">Java</span><span class="service-chip">Spring Boot</span><span class="service-chip">PHP</span><span class="service-chip">Git</span></div>
+                    </div>
+                </div>
+                <div class="swiper-slide h-auto">
+                    <div class="service-card h-full p-8 glass-card-hover rounded-2xl luxury-card flex flex-col text-center">
+                        <div class="icon-bg icon-bg-gold mx-auto">
+                            <i data-lucide="layers" class="text-gold w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-3 text-white">Information Systems Development</h3>
+                        <p class="text-xs text-secondary leading-relaxed mb-6">Creating custom information and management systems, including ERP modules, records, and inventory platforms, that digitise workflows and give organisations reliable, decision-ready data.</p>
+                        <div class="service-chips mt-auto"><span class="service-chip">ERPNext</span><span class="service-chip">Frappe</span><span class="service-chip">Yii</span><span class="service-chip">PostgreSQL</span></div>
+                    </div>
+                </div>
+                <div class="swiper-slide h-auto">
+                    <div class="service-card h-full p-8 glass-card-hover rounded-2xl luxury-card flex flex-col text-center">
+                        <div class="icon-bg icon-bg-blue mx-auto">
+                            <i data-lucide="smartphone" class="text-gold w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-3 text-white">Mobile Application Development</h3>
+                        <p class="text-xs text-secondary leading-relaxed mb-6">Building cross-platform mobile apps with Flutter and Dart, connected to secure REST APIs for smooth, native-feeling experiences on Android and iOS.</p>
+                        <div class="service-chips mt-auto"><span class="service-chip">Flutter</span><span class="service-chip">Dart</span><span class="service-chip">REST APIs</span></div>
+                    </div>
+                </div>
+                <div class="swiper-slide h-auto">
+                    <div class="service-card h-full p-8 glass-card-hover rounded-2xl luxury-card flex flex-col text-center">
+                        <div class="icon-bg icon-bg-indigo mx-auto">
+                            <i data-lucide="search" class="text-gold w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-3 text-white">Search Engine Optimization (SEO)</h3>
+                        <p class="text-xs text-secondary leading-relaxed mb-6">Optimizing websites for search engines to improve search engine rankings, visibility, and drive high-quality organic traffic.</p>
+                        <div class="service-chips mt-auto"><span class="service-chip">Keyword Research</span><span class="service-chip">On-Page SEO</span><span class="service-chip">Technical SEO</span></div>
+                    </div>
+                </div>
+                <div class="swiper-slide h-auto">
+                    <div class="service-card h-full p-8 glass-card-hover rounded-2xl luxury-card flex flex-col text-center">
+                        <div class="icon-bg icon-bg-gold mx-auto">
+                            <i data-lucide="trending-up" class="text-gold w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-3 text-white">Business Analysis</h3>
+                        <p class="text-xs text-secondary leading-relaxed mb-6">Leveraging Bachelors in Business Information Technology insights to seamlessly align technical architectures with bottom-line commercial goals.</p>
+                        <div class="service-chips mt-auto"><span class="service-chip">Requirements</span><span class="service-chip">Process Mapping</span><span class="service-chip">BI</span></div>
+                    </div>
+                </div>
+                <div class="swiper-slide h-auto">
+                    <div class="service-card h-full p-8 glass-card-hover rounded-2xl luxury-card flex flex-col text-center">
+                        <div class="icon-bg icon-bg-blue mx-auto">
+                            <i data-lucide="clipboard-list" class="text-gold w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-3 text-white">Data Entry &amp; Data Management</h3>
+                        <p class="text-xs text-secondary leading-relaxed mb-6">Accurate, verified data capture and organisation, from facility records and GPS coordinates to large spreadsheet datasets, with a strong focus on precision and consistency.</p>
+                        <div class="service-chips mt-auto"><span class="service-chip">Excel</span><span class="service-chip">Google Sheets</span><span class="service-chip">Data Verification</span></div>
                     </div>
                 </div>
 
-                <div class="swiper-slide h-auto">
-                    <div class="service-card h-full p-8 glass-card-hover rounded-xl luxury-card flex flex-col text-center">
-                        <div class="w-12 h-12 rounded-full icon-bg icon-bg-blue mb-4 mx-auto flex items-center justify-center">
-                            <i data-lucide="code-2" class="text-gold w-5 h-5"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-lg mb-2 text-white">Full-Stack Web Development</h3>
-                            <p class="text-xs text-secondary leading-relaxed">
-                                Clean code implementation using Python, Django, and modern React for fast, responsive, and secure digital platforms.
-                            </p>
-                        </div>
-                    </div>
                 </div>
-
-                <div class="swiper-slide h-auto">
-                    <div class="service-card h-full p-8 glass-card-hover rounded-xl luxury-card flex flex-col text-center">
-                        <div class="w-12 h-12 rounded-full icon-bg icon-bg-gold mb-4 mx-auto flex items-center justify-center">
-                            <i data-lucide="trending-up" class="text-gold w-5 h-5"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-lg mb-2 text-white">Business Analysis</h3>
-                            <p class="text-xs text-secondary leading-relaxed">
-                                Leveraging Bachelors in Business Information Technology insights to seamlessly align technical architectures with bottom-line commercial goals.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
             </div>
-            <div class="swiper-pagination mt-8"></div>
+
+            <button type="button" class="services-nav services-next" aria-label="Next service">
+                <i data-lucide="chevron-right" class="w-5 h-5"></i>
+            </button>
         </div>
+        <div class="swiper-pagination services-pagination mt-8"></div>
     </div>
 </section>
 
         <section id="skills" class="py-24 section-bg">
             <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-black mb-12 text-center uppercase tracking-tighter section-title animate-delay-100">
+                <h2 class="text-3xl font-black mb-4 text-center uppercase tracking-tighter section-title animate-delay-100">
                     My <span class="text-gold">Skills</span>
                 </h2>
-                <div class="max-w-5xl mx-auto space-y-8 animate-delay-200">
+                <p class="text-sm text-secondary text-center max-w-2xl mx-auto mb-12">
+                    The languages, frameworks, platforms, and strengths I bring to every project.
+                </p>
+                <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 animate-delay-200">
 
-                    <!-- Group 1 — Programming Languages -->
-                    <div class="glass-card-hover programming-languages-card p-6 rounded-2xl luxury-card">
-                        <h3 class="text-base font-black uppercase tracking-[0.12em] text-gold mb-4">Programming Languages</h3>
+                    <div class="glass-card-hover programming-languages-card md:col-span-2 p-6 rounded-2xl luxury-card">
+                        <div class="flex items-center gap-3 mb-5">
+                            <span class="skill-group-icon"><i class="fa-solid fa-code" aria-hidden="true"></i></span>
+                            <h3 class="text-base font-black uppercase tracking-[0.12em] text-gold">Programming Languages</h3>
+                        </div>
                         <div class="flex flex-wrap gap-3">
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">JavaScript</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">TypeScript</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">PHP</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">SQL</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Solidity</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Dart</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="" class="skill-icon" loading="lazy">Python</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="" class="skill-icon" loading="lazy">Java</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="" class="skill-icon" loading="lazy">JavaScript</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="" class="skill-icon" loading="lazy">TypeScript</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="" class="skill-icon" loading="lazy">PHP</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><i class="fa-solid fa-database skill-fa" aria-hidden="true"></i>SQL</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg" alt="" class="skill-icon" loading="lazy">Dart</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg" alt="" class="skill-icon skill-icon--light" loading="lazy">Solidity</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="" class="skill-icon" loading="lazy">HTML5</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="" class="skill-icon" loading="lazy">CSS3</span>
                         </div>
                     </div>
-
-                    <!-- Group 2 — Frameworks and Libraries -->
                     <div class="glass-card-hover p-6 rounded-2xl luxury-card">
-                        <h3 class="text-base font-black uppercase tracking-[0.12em] text-gold mb-4">Frameworks &amp; Libraries</h3>
+                        <div class="flex items-center gap-3 mb-5">
+                            <span class="skill-group-icon"><i class="fa-solid fa-cubes" aria-hidden="true"></i></span>
+                            <h3 class="text-base font-black uppercase tracking-[0.12em] text-gold">Frameworks &amp; Libraries</h3>
+                        </div>
                         <div class="flex flex-wrap gap-3">
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Django</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Bootstrap</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">React</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Node.js</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Docker</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Laravel</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="" class="skill-icon skill-icon--light" loading="lazy">Django</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="" class="skill-icon skill-icon--light" loading="lazy">Django REST Framework</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="" class="skill-icon" loading="lazy">Spring Boot</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" alt="" class="skill-icon" loading="lazy">Laravel</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/yii/yii-original.svg" alt="" class="skill-icon" loading="lazy">Yii Framework</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="" class="skill-icon" loading="lazy">React</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angular/angular-original.svg" alt="" class="skill-icon" loading="lazy">Angular</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="" class="skill-icon" loading="lazy">Node.js</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" alt="" class="skill-icon" loading="lazy">Flutter</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/frappe.svg" alt="" class="skill-icon skill-icon--light" loading="lazy">Frappe</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/erpnext.svg" alt="" class="skill-icon skill-icon--light" loading="lazy">ERPNext</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" alt="" class="skill-icon" loading="lazy">Bootstrap</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="" class="skill-icon" loading="lazy">Tailwind CSS</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jquery/jquery-original.svg" alt="" class="skill-icon skill-icon--light" loading="lazy">jQuery</span>
                         </div>
                     </div>
-
-                    <!-- Group 3 — Database Technologies -->
                     <div class="glass-card-hover p-6 rounded-2xl luxury-card">
-                        <h3 class="text-base font-black uppercase tracking-[0.12em] text-gold mb-4">Database Technologies</h3>
+                        <div class="flex items-center gap-3 mb-5">
+                            <span class="skill-group-icon"><i class="fa-solid fa-database" aria-hidden="true"></i></span>
+                            <h3 class="text-base font-black uppercase tracking-[0.12em] text-gold">Database Technologies</h3>
+                        </div>
                         <div class="flex flex-wrap gap-3">
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">MySQL</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">DBMS</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">MongoDB</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">SQLite</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="" class="skill-icon skill-icon--light" loading="lazy">MySQL</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="" class="skill-icon" loading="lazy">PostgreSQL</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/oracle.svg" alt="" class="skill-icon skill-icon--light" loading="lazy">Oracle Database</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="" class="skill-icon" loading="lazy">MongoDB</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg" alt="" class="skill-icon" loading="lazy">SQLite</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><i class="fa-solid fa-server skill-fa" aria-hidden="true"></i>DBMS</span>
                         </div>
                     </div>
-
-                    <!-- Group 4 — Softwares and Tools -->
                     <div class="glass-card-hover p-6 rounded-2xl luxury-card">
-                        <h3 class="text-base font-black uppercase tracking-[0.12em] text-gold mb-4">Softwares &amp; Tools</h3>
+                        <div class="flex items-center gap-3 mb-5">
+                            <span class="skill-group-icon"><i class="fa-solid fa-cloud" aria-hidden="true"></i></span>
+                            <h3 class="text-base font-black uppercase tracking-[0.12em] text-gold">Cloud &amp; DevOps</h3>
+                        </div>
                         <div class="flex flex-wrap gap-3">
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Git</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">GitLab</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Azure</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Webpack</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Sass</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Figma</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">MVP</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Google Cloud</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">AWS</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">SDLC</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">MVC Architecture</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">DevOps</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Canva</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="" class="skill-icon skill-icon--light" loading="lazy">AWS</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" alt="" class="skill-icon" loading="lazy">Microsoft Azure</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="" class="skill-icon" loading="lazy">Google Cloud</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="" class="skill-icon" loading="lazy">Docker</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="" class="skill-icon" loading="lazy">Git</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="" class="skill-icon skill-icon--light" loading="lazy">GitHub</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg" alt="" class="skill-icon" loading="lazy">GitLab</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><i class="fa-solid fa-infinity skill-fa" aria-hidden="true"></i>DevOps</span>
                         </div>
                     </div>
-
-                    <!-- Group 5 — Top Skills -->
                     <div class="glass-card-hover p-6 rounded-2xl luxury-card">
-                        <h3 class="text-base font-black uppercase tracking-[0.12em] text-gold mb-4">Top Skills</h3>
+                        <div class="flex items-center gap-3 mb-5">
+                            <span class="skill-group-icon"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i></span>
+                            <h3 class="text-base font-black uppercase tracking-[0.12em] text-gold">Tools &amp; Design</h3>
+                        </div>
                         <div class="flex flex-wrap gap-3">
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Software Development</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Blockchain Technology</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Project Management</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Artificial Intelligence</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Machine Learning</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Generative AI</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">UI/UX Design</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Human Computer Interaction</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Business Intelligence</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Networking</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Database Management</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Microsoft Office</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Google Workspace</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Figma</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="" class="skill-icon" loading="lazy">VS Code</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="" class="skill-icon" loading="lazy">Figma</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg" alt="" class="skill-icon" loading="lazy">Canva</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/webpack/webpack-original.svg" alt="" class="skill-icon" loading="lazy">Webpack</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg" alt="" class="skill-icon" loading="lazy">Sass</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><i class="fa-brands fa-microsoft skill-fa" aria-hidden="true"></i>Microsoft Office</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><i class="fa-brands fa-google skill-fa" aria-hidden="true"></i>Google Workspace</span>
                         </div>
                     </div>
-
-                    <!-- Group 6 — Soft Skills -->
                     <div class="glass-card-hover p-6 rounded-2xl luxury-card">
-                        <h3 class="text-base font-black uppercase tracking-[0.12em] text-gold mb-4">Soft Skills</h3>
+                        <div class="flex items-center gap-3 mb-5">
+                            <span class="skill-group-icon"><i class="fa-solid fa-sitemap" aria-hidden="true"></i></span>
+                            <h3 class="text-base font-black uppercase tracking-[0.12em] text-gold">Architecture &amp; Methodologies</h3>
+                        </div>
                         <div class="flex flex-wrap gap-3">
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Communication</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Creativity</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Team Collaboration</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Willingness to Learn</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Problem Solving</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Analytical Skills</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Time Management</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Project Management</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Attention to Detail</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Adaptability</span>
-                            <span class="skill-tag px-5 py-2.5 rounded-full text-xs font-bold hover-lift transition-all duration-300">Innovation</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><i class="fa-solid fa-arrows-spin skill-fa" aria-hidden="true"></i>SDLC</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><i class="fa-solid fa-sitemap skill-fa" aria-hidden="true"></i>MVC Architecture</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><i class="fa-solid fa-plug skill-fa" aria-hidden="true"></i>REST APIs</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><i class="fa-solid fa-rocket skill-fa" aria-hidden="true"></i>MVP Development</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><i class="fa-solid fa-code-branch skill-fa" aria-hidden="true"></i>Version Control</span>
+                        </div>
+                    </div>
+                    <div class="glass-card-hover p-6 rounded-2xl luxury-card">
+                        <div class="flex items-center gap-3 mb-5">
+                            <span class="skill-group-icon"><i class="fa-solid fa-star" aria-hidden="true"></i></span>
+                            <h3 class="text-base font-black uppercase tracking-[0.12em] text-gold">Top Skills</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><i class="fa-solid fa-laptop-code skill-fa" aria-hidden="true"></i>Software Development</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><i class="fa-solid fa-diagram-project skill-fa" aria-hidden="true"></i>Information Systems</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><i class="fa-solid fa-mobile-screen skill-fa" aria-hidden="true"></i>Mobile Development</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><i class="fa-solid fa-link skill-fa" aria-hidden="true"></i>Blockchain Technology</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><i class="fa-solid fa-brain skill-fa" aria-hidden="true"></i>Artificial Intelligence</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><i class="fa-solid fa-robot skill-fa" aria-hidden="true"></i>Machine Learning</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><i class="fa-solid fa-wand-magic-sparkles skill-fa" aria-hidden="true"></i>Generative AI</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><i class="fa-solid fa-pen-ruler skill-fa" aria-hidden="true"></i>UI/UX Design</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><i class="fa-solid fa-hand-pointer skill-fa" aria-hidden="true"></i>Human Computer Interaction</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><i class="fa-solid fa-chart-line skill-fa" aria-hidden="true"></i>Business Intelligence</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><i class="fa-solid fa-magnifying-glass-chart skill-fa" aria-hidden="true"></i>Search Engine Optimization</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><i class="fa-solid fa-table skill-fa" aria-hidden="true"></i>Database Management</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><i class="fa-solid fa-keyboard skill-fa" aria-hidden="true"></i>Data Entry</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><i class="fa-solid fa-network-wired skill-fa" aria-hidden="true"></i>Networking</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><i class="fa-solid fa-list-check skill-fa" aria-hidden="true"></i>Project Management</span>
+                        </div>
+                    </div>
+                    <div class="glass-card-hover p-6 rounded-2xl luxury-card">
+                        <div class="flex items-center gap-3 mb-5">
+                            <span class="skill-group-icon"><i class="fa-solid fa-people-group" aria-hidden="true"></i></span>
+                            <h3 class="text-base font-black uppercase tracking-[0.12em] text-gold">Soft Skills</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><i class="fa-solid fa-comments skill-fa" aria-hidden="true"></i>Communication</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><i class="fa-solid fa-lightbulb skill-fa" aria-hidden="true"></i>Creativity</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><i class="fa-solid fa-handshake skill-fa" aria-hidden="true"></i>Team Collaboration</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><i class="fa-solid fa-book-open skill-fa" aria-hidden="true"></i>Willingness to Learn</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><i class="fa-solid fa-puzzle-piece skill-fa" aria-hidden="true"></i>Problem Solving</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><i class="fa-solid fa-magnifying-glass skill-fa" aria-hidden="true"></i>Analytical Skills</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><i class="fa-solid fa-clock skill-fa" aria-hidden="true"></i>Time Management</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><i class="fa-solid fa-crosshairs skill-fa" aria-hidden="true"></i>Attention to Detail</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><i class="fa-solid fa-shuffle skill-fa" aria-hidden="true"></i>Adaptability</span>
+                            <span class="skill-tag inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold hover-lift"><i class="fa-solid fa-rocket skill-fa" aria-hidden="true"></i>Innovation</span>
                         </div>
                     </div>
 
@@ -945,12 +1222,12 @@
 
                 <!-- Frappe Framework (Full Color) -->
                 <div class="swiper-slide flex items-center justify-center opacity-90 hover:opacity-100 transition-opacity duration-300">
-                    <img src="https://api.iconify.design/logos:frappe.svg" alt="Frappe Framework" class="h-7 w-auto">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/frappe.svg" alt="Frappe Framework" class="h-7 w-auto filter brightness-0 invert">
                 </div>
 
                 <!-- ERPNext (Full Color) -->
                 <div class="swiper-slide flex items-center justify-center opacity-90 hover:opacity-100 transition-opacity duration-300">
-                    <img src="https://api.iconify.design/logos:erpnext.svg" alt="ERPNext" class="h-6 w-auto">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/erpnext.svg" alt="ERPNext" class="h-6 w-auto filter brightness-0 invert">
                 </div>
 
                 <!-- MongoDB (Full Color) -->
@@ -990,7 +1267,7 @@
 
                 <!-- Absa Bank -->
                 <div class="swiper-slide flex items-center justify-center opacity-90 hover:opacity-100 transition-opacity duration-300">
-                    <img src="https://api.iconify.design/logos:absa.svg" alt="Absa Bank" class="h-6 w-auto">
+                    <span class="text-xl font-black tracking-tight text-slate-200 lowercase font-sans">absa</span>
                 </div>
 
                 <!-- IEBC ICT -->
@@ -1325,69 +1602,69 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <a href="IBMDesignPractitioner.pdf" target="_blank" rel="noopener" class="group block glass-card-hover rounded-2xl luxury-card overflow-hidden hover-lift">
+            <div role="button" tabindex="0" data-cert-src="images/certificates/ibm-design-thinking.jpg" data-cert-title="Enterprise Design Thinking Practitioner" class="cert-card group block glass-card-hover rounded-2xl luxury-card overflow-hidden hover-lift">
                 <div class="relative aspect-[4/3] bg-slate-950 overflow-hidden">
-                    <img src="images/ibm-design-practitioner-certificate-preview.jpg" alt="IBM Enterprise Design Thinking Practitioner certificate awarded to Joy Kamau" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <img draggable="false" src="images/certificates/ibm-design-thinking.jpg" alt="IBM Enterprise Design Thinking Practitioner certificate awarded to Joy Kamau" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-amber-400 text-[#1e1b4b]">IBM</span>
                 </div>
                 <div class="p-6">
                     <h3 class="font-extrabold text-sm tracking-wide text-white leading-snug mb-1.5">Enterprise Design Thinking Practitioner</h3>
                     <p class="text-xs text-gold font-semibold mb-3">IBM</p>
                     <p class="text-[11px] text-secondary leading-relaxed mb-4">Professional credential in human-centred design practice, issued March 2025.</p>
-                    <div class="pt-3 border-t border-white/8 text-[11px] font-black uppercase tracking-widest text-amber-400">View certificate ↗</div>
+                    <div class="pt-3 border-t border-white/8 text-[11px] font-black uppercase tracking-widest text-amber-400">View certificate</div>
                 </div>
-            </a>
+            </div>
 
-            <a href="Joy%20Kamau%20Certification%20.pdf" target="_blank" rel="noopener" class="group block glass-card-hover rounded-2xl luxury-card overflow-hidden hover-lift">
+            <div role="button" tabindex="0" data-cert-src="images/certificates/kca-bbit-degree.jpg" data-cert-title="Bachelor of Business Information Technology" class="cert-card group block glass-card-hover rounded-2xl luxury-card overflow-hidden hover-lift">
                 <div class="relative aspect-[4/3] bg-slate-950 overflow-hidden">
-                    <img src="images/joy-kamau-certificate-preview.jpg" alt="KCA University Bachelor of Business Information Technology certificate awarded to Joy Kamau" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <img draggable="false" src="images/certificates/kca-bbit-degree.jpg" alt="KCA University Bachelor of Business Information Technology certificate awarded to Joy Kamau" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-amber-400 text-[#1e1b4b]">KCA University</span>
                 </div>
                 <div class="p-6">
                     <h3 class="font-extrabold text-sm tracking-wide text-white leading-snug mb-1.5">Bachelor of Business Information Technology</h3>
                     <p class="text-xs text-gold font-semibold mb-3">KCA University</p>
                     <p class="text-[11px] text-secondary leading-relaxed mb-4">Second Class Honours (Upper Division), awarded November 2025.</p>
-                    <div class="pt-3 border-t border-white/8 text-[11px] font-black uppercase tracking-widest text-amber-400">View certificate ↗</div>
+                    <div class="pt-3 border-t border-white/8 text-[11px] font-black uppercase tracking-widest text-amber-400">View certificate</div>
                 </div>
-            </a>
+            </div>
 
-            <a href="images/alx-ai-career-essentials-certificate.png" target="_blank" rel="noopener" class="group block glass-card-hover rounded-2xl luxury-card overflow-hidden hover-lift">
+            <div role="button" tabindex="0" data-cert-src="images/certificates/alx-ai-career-essentials.jpg" data-cert-title="AI Career Essentials" class="cert-card group block glass-card-hover rounded-2xl luxury-card overflow-hidden hover-lift">
                 <div class="relative aspect-[4/3] overflow-hidden bg-[#062e58]">
-                    <img src="images/alx-ai-career-essentials-certificate.png" alt="ALX AI Career Essentials certificate awarded to Joy Kamau" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <img draggable="false" src="images/certificates/alx-ai-career-essentials.jpg" alt="ALX AI Career Essentials certificate awarded to Joy Kamau" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-emerald-400 text-[#062e58]">ALX</span>
                 </div>
                 <div class="p-6">
                     <h3 class="font-extrabold text-sm tracking-wide text-white leading-snug mb-1.5">AI Career Essentials</h3>
                     <p class="text-xs text-gold font-semibold mb-3">ALX</p>
                     <p class="text-[11px] text-secondary leading-relaxed mb-4">8-week programme in AI-augmented professional development skills.</p>
-                    <div class="pt-3 border-t border-white/8 text-[11px] font-black uppercase tracking-widest text-amber-400">View certificate ↗</div>
+                    <div class="pt-3 border-t border-white/8 text-[11px] font-black uppercase tracking-widest text-amber-400">View certificate</div>
                 </div>
-            </a>
+            </div>
 
-            <a href="images/bitcoin-diploma-certificate.jpg" target="_blank" rel="noopener" class="group block glass-card-hover rounded-2xl luxury-card overflow-hidden hover-lift">
+            <div role="button" tabindex="0" data-cert-src="images/certificates/bitcoin-diploma.jpg" data-cert-title="Bitcoin Diploma" class="cert-card group block glass-card-hover rounded-2xl luxury-card overflow-hidden hover-lift">
                 <div class="relative aspect-[4/3] overflow-hidden bg-slate-100">
-                    <img src="images/bitcoin-diploma-certificate.jpg" alt="Bitcoin Diploma certificate awarded to Joy Kamau" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <img draggable="false" src="images/certificates/bitcoin-diploma.jpg" alt="Bitcoin Diploma certificate awarded to Joy Kamau" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-amber-400 text-[#1e1b4b]">Bitcoin</span>
                 </div>
                 <div class="p-6">
                     <h3 class="font-extrabold text-sm tracking-wide text-white leading-snug mb-1.5">Bitcoin Diploma</h3>
                     <p class="text-xs text-gold font-semibold mb-3">My First Bitcoin / The Core</p>
                     <p class="text-[11px] text-secondary leading-relaxed mb-4">Certificate of completion for the Bitcoin Diploma online course.</p>
-                    <div class="pt-3 border-t border-white/8 text-[11px] font-black uppercase tracking-widest text-amber-400">View certificate ↗</div>
+                    <div class="pt-3 border-t border-white/8 text-[11px] font-black uppercase tracking-widest text-amber-400">View certificate</div>
                 </div>
-            </a>
-            <a href="images/Forward.pdf" target="_blank" rel="noopener" class="group block glass-card-hover rounded-2xl luxury-card overflow-hidden hover-lift">
+            </div>
+            <div role="button" tabindex="0" data-cert-src="images/certificates/mckinsey-forward.jpg" data-cert-title="Forward Program" class="cert-card group block glass-card-hover rounded-2xl luxury-card overflow-hidden hover-lift">
                 <div class="relative aspect-[4/3] overflow-hidden bg-slate-950">
-                    <img src="images/forward-certificate-preview.png" alt="McKinsey Forward Program certificate awarded to Joy Kamau" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <img draggable="false" src="images/certificates/mckinsey-forward.jpg" alt="McKinsey Forward Program certificate awarded to Joy Kamau" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-amber-400 text-[#1e1b4b]">McKinsey</span>
                 </div>
                 <div class="p-6">
                     <h3 class="font-extrabold text-sm tracking-wide text-white leading-snug mb-1.5">Forward Program</h3>
                     <p class="text-xs text-gold font-semibold mb-3">McKinsey &amp; Company</p>
                     <p class="text-[11px] text-secondary leading-relaxed mb-4">Career-readiness programme covering professional skills, problem-solving, and digital essentials.</p>
-                    <div class="pt-3 border-t border-white/8 text-[11px] font-black uppercase tracking-widest text-amber-400">View certificate ↗</div>
+                    <div class="pt-3 border-t border-white/8 text-[11px] font-black uppercase tracking-widest text-amber-400">View certificate</div>
                 </div>
-            </a>
+            </div>
         </div>
 
         <!-- Previous placeholder credential cards retained in source only; the verified certificates above are displayed. -->
@@ -1668,6 +1945,23 @@
         </section>
     </main>
 
+
+    <!-- Certificate viewer: view only, no download link -->
+    <div id="certModal" class="cert-modal hidden" role="dialog" aria-modal="true" aria-labelledby="certModalTitle" aria-hidden="true">
+        <div class="cert-modal__backdrop" data-cert-close></div>
+        <div class="cert-modal__panel">
+            <div class="flex items-center justify-between gap-4 mb-4">
+                <h3 id="certModalTitle" class="text-sm font-extrabold text-white"></h3>
+                <button type="button" class="cert-modal__close" data-cert-close aria-label="Close certificate viewer">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <div id="certModalFrame" class="cert-modal__frame" role="img" aria-label="">
+            </div>
+            <p class="text-[10px] uppercase tracking-widest mt-3 text-center" style="color: var(--text-muted)">View only. Downloading is disabled.</p>
+        </div>
+    </div>
+
     <footer class="py-12 border-t border-white/5 text-center text-[10px] text-gray-700 uppercase tracking-widest">
         &copy; 2026 Joy Kamau. All rights reserved.
     </footer>
@@ -1675,12 +1969,56 @@
     <script>
         lucide.createIcons();
 
-        // Deters casual image copying while preserving normal card and link navigation.
+        // Deters casual copying: no right-click menu or dragging on images and certificates.
+        const protectedSelector = 'img, .cert-card, #certModal';
         document.addEventListener('contextmenu', (event) => {
-            if (event.target.closest('img')) event.preventDefault();
+            if (event.target.closest(protectedSelector)) event.preventDefault();
         });
         document.addEventListener('dragstart', (event) => {
-            if (event.target.closest('img')) event.preventDefault();
+            if (event.target.closest(protectedSelector)) event.preventDefault();
+        });
+        // Blocks "Save page as", which would otherwise download every certificate image.
+        document.addEventListener('keydown', (event) => {
+            if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 's') event.preventDefault();
+        });
+
+        // Certificate viewer
+        const certModal = document.getElementById('certModal');
+        const certModalFrame = document.getElementById('certModalFrame');
+        const certModalTitle = document.getElementById('certModalTitle');
+        let lastCertTrigger = null;
+
+        function openCertificate(card) {
+            lastCertTrigger = card;
+            certModalTitle.textContent = card.dataset.certTitle;
+            certModalFrame.setAttribute('aria-label', card.dataset.certTitle + ' certificate');
+            certModalFrame.style.backgroundImage = `url('${card.dataset.certSrc}')`;
+            certModal.classList.remove('hidden');
+            certModal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            certModal.querySelector('.cert-modal__close').focus();
+        }
+
+        function closeCertificate() {
+            certModal.classList.add('hidden');
+            certModal.setAttribute('aria-hidden', 'true');
+            certModalFrame.style.backgroundImage = '';
+            document.body.style.overflow = '';
+            if (lastCertTrigger) lastCertTrigger.focus();
+        }
+
+        document.querySelectorAll('.cert-card').forEach((card) => {
+            card.addEventListener('click', () => openCertificate(card));
+            card.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    openCertificate(card);
+                }
+            });
+        });
+        certModal.querySelectorAll('[data-cert-close]').forEach((el) => el.addEventListener('click', closeCertificate));
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && !certModal.classList.contains('hidden')) closeCertificate();
         });
 
         // Initialize Swiper for logo carousel
@@ -1712,18 +2050,27 @@
         });
         // Initialize Swiper for services / "What I Do" carousel
         const servicesSwiper = new Swiper('.servicesSwiper', {
-            loop: false,
-            rewind: true,
+            loop: true,
             grabCursor: true,
             slidesPerView: 1,
             spaceBetween: 24,
+            speed: 700,
             autoplay: {
-                delay: 4000,
+                delay: 4500,
                 disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+            },
+            navigation: {
+                prevEl: '.services-prev',
+                nextEl: '.services-next',
             },
             pagination: {
-                el: '.servicesSwiper .swiper-pagination',
+                el: '.services-pagination',
                 clickable: true,
+            },
+            keyboard: {
+                enabled: true,
+                onlyInViewport: true,
             },
             breakpoints: {
                 768: {
