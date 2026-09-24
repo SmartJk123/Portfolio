@@ -878,6 +878,163 @@
             overflow: hidden;
         }
 
+        /* ── CONTACT FORM TOAST ── */
+        .form-toast {
+            position: absolute;
+            inset: -0.75rem;
+            z-index: 30;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            border-radius: 1.25rem;
+            background: rgba(8, 7, 20, 0.6);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .form-toast.is-visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .form-toast__card {
+            --toast-accent: #34d399;
+            position: relative;
+            width: min(360px, 100%);
+            padding: 2rem 1.75rem 1.75rem;
+            border-radius: 1rem;
+            text-align: center;
+            overflow: hidden;
+            background: linear-gradient(160deg, rgba(49, 46, 129, 0.95), rgba(15, 14, 26, 0.97));
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 24px 60px rgba(8, 7, 20, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.03);
+            transform: translateY(16px) scale(0.85);
+            transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .form-toast.is-visible .form-toast__card {
+            transform: translateY(0) scale(1);
+        }
+
+        .form-toast[data-variant="error"] .form-toast__card { --toast-accent: #f87171; }
+        .form-toast[data-variant="warning"] .form-toast__card { --toast-accent: var(--gold); }
+
+        .form-toast__icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 1rem;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            color: var(--toast-accent);
+            background: color-mix(in srgb, var(--toast-accent) 16%, transparent);
+            border: 2px solid color-mix(in srgb, var(--toast-accent) 55%, transparent);
+            box-shadow: 0 0 28px color-mix(in srgb, var(--toast-accent) 35%, transparent);
+            transform: scale(0);
+        }
+
+        .form-toast.is-visible .form-toast__icon {
+            animation: toast-icon-pop 0.5s 0.15s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        @keyframes toast-icon-pop {
+            to { transform: scale(1); }
+        }
+
+        .form-toast__title {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--text-white);
+            margin-bottom: 0.4rem;
+        }
+
+        .form-toast__text {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        .form-toast__text a {
+            color: var(--gold);
+            text-decoration: underline;
+        }
+
+        .form-toast__close {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            width: 30px;
+            height: 30px;
+            border-radius: 9999px;
+            color: var(--text-muted);
+            transition: var(--transition-default);
+        }
+
+        .form-toast__close:hover {
+            color: var(--gold);
+            background: rgba(251, 191, 36, 0.12);
+        }
+
+        .form-toast__progress {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 3px;
+            width: 100%;
+            background: var(--toast-accent);
+            transform-origin: left;
+            transform: scaleX(0);
+        }
+
+        .form-toast.is-visible .form-toast__progress {
+            animation: toast-progress var(--toast-duration, 6s) linear forwards;
+        }
+
+        @keyframes toast-progress {
+            from { transform: scaleX(1); }
+            to { transform: scaleX(0); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .form-toast__card,
+            .form-toast.is-visible .form-toast__card { transition: none; transform: none; }
+            .form-toast.is-visible .form-toast__icon { animation: none; transform: scale(1); }
+        }
+
+        /* ── CV VIEWER ── */
+        .resume-pages {
+            height: min(76vh, 760px);
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: #0b0a17;
+            border-radius: 0.75rem;
+        }
+
+        .resume-pages canvas {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            background: #ffffff;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .resume-status {
+            margin: auto;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+
         @media print {
             .cert-card img,
             .cert-modal {
@@ -915,7 +1072,7 @@
                     </p>
                     <div class="flex flex-wrap items-center gap-4 pt-4 animate-delay-500">
                         <a href="#projects" class="btn-primary hover-lift">View My Work</a>
-                        <a href="images/resume.pdf" class="btn-outline hover-lift">View CV</a>
+                        <button type="button" id="viewCvButton" class="btn-outline hover-lift">View CV</button>
                     </div>
                 </div>
                 <div class="flex justify-center">
@@ -1697,10 +1854,10 @@
                 </div>
             </div>
 
-            <div role="button" tabindex="0" data-cert-src="images/certificates/microsoft-power-bi.png" data-cert-title="Get Started Building with Power BI" class="cert-card group block glass-card-hover rounded-2xl luxury-card overflow-hidden hover-lift">
+            <div role="button" tabindex="0" data-cert-src="images/certificates/microsoft-power-bi.jpg" data-cert-title="Get Started Building with Power BI" class="cert-card group block glass-card-hover rounded-2xl luxury-card overflow-hidden hover-lift">
                 <div class="relative aspect-[4/3] overflow-hidden bg-slate-100">
-                    <img draggable="false" src="images/certificates/microsoft-power-bi.png" alt="Microsoft Get Started Building with Power BI certificate awarded to Joy Kamau" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-amber-400 text-[#1e1b4b]">Microsoft</span>
+                    <img draggable="false" src="images/certificates/microsoft-power-bi.jpg" alt="Microsoft Get Started Building with Power BI certificate awarded to Joy Kamau" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <span class="absolute top-3 left-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-amber-400 text-[#1e1b4b]"><i class="fa-brands fa-microsoft" aria-hidden="true"></i>Microsoft</span>
                 </div>
                 <div class="p-6">
                     <h3 class="font-extrabold text-sm tracking-wide text-white leading-snug mb-1.5">Get Started Building with Power BI</h3>
@@ -1881,7 +2038,7 @@
                 </p>
                 <div class="grid md:grid-cols-2 gap-12 animate-delay-300">
                     <!-- Contact Form -->
-                    <div>
+                    <div class="relative">
                         <form id="contactForm" class="space-y-6" method="POST">
                             <!-- Honeypot: hidden from people, catches spam bots -->
                             <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
@@ -1956,11 +2113,17 @@
                             </button>
                         </form>
                         
-                        <div id="formSuccess" class="hidden mt-6 text-center">
-                            <p class="text-green-400">Thank you for your message! I'll get back to you soon.</p>
-                        </div>
-                        <div id="formError" class="hidden mt-6 text-center">
-                            <p class="text-red-400">Sorry, your message could not be sent. Please try again or email <a href="mailto:joykamau123@gmail.com" class="underline">joykamau123@gmail.com</a>.</p>
+                        <!-- Form feedback toast: pops over the form after submit -->
+                        <div id="formToast" class="form-toast" data-variant="success" aria-hidden="true">
+                            <div class="form-toast__card" role="status" aria-live="polite">
+                                <button type="button" class="form-toast__close" aria-label="Dismiss message">
+                                    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                                </button>
+                                <div class="form-toast__icon"><i class="fa-solid fa-check" aria-hidden="true"></i></div>
+                                <p class="form-toast__title"></p>
+                                <p class="form-toast__text"></p>
+                                <span class="form-toast__progress" aria-hidden="true"></span>
+                            </div>
                         </div>
                     </div>
                     
@@ -2030,6 +2193,23 @@
         </div>
     </div>
 
+    <!-- CV viewer: renders images/resume.pdf with a watermark on every page, no download link -->
+    <div id="resumeModal" class="cert-modal hidden" role="dialog" aria-modal="true" aria-labelledby="resumeModalTitle" aria-hidden="true">
+        <div class="cert-modal__backdrop" data-resume-close></div>
+        <div class="cert-modal__panel">
+            <div class="flex items-center justify-between gap-4 mb-4">
+                <h3 id="resumeModalTitle" class="text-sm font-extrabold text-white">Joy Kamau &middot; Curriculum Vitae</h3>
+                <button type="button" class="cert-modal__close" data-resume-close aria-label="Close CV viewer">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <div id="resumePages" class="resume-pages">
+                <p id="resumeStatus" class="resume-status">Loading CV...</p>
+            </div>
+            <p class="text-[10px] uppercase tracking-widest mt-3 text-center" style="color: var(--text-muted)">View only. Downloading is disabled.</p>
+        </div>
+    </div>
+
     <footer class="py-12 border-t border-white/5 text-center text-[10px] text-gray-700 uppercase tracking-widest">
         &copy; 2026 Joy Kamau. All rights reserved.
     </footer>
@@ -2038,7 +2218,7 @@
         lucide.createIcons();
 
         // Deters casual copying: no right-click menu or dragging on images and certificates.
-        const protectedSelector = 'img, .cert-card, #certModal';
+        const protectedSelector = 'img, .cert-card, #certModal, #resumeModal';
         document.addEventListener('contextmenu', (event) => {
             if (event.target.closest(protectedSelector)) event.preventDefault();
         });
@@ -2087,6 +2267,104 @@
         certModal.querySelectorAll('[data-cert-close]').forEach((el) => el.addEventListener('click', closeCertificate));
         document.addEventListener('keydown', (event) => {
             if (event.key === 'Escape' && !certModal.classList.contains('hidden')) closeCertificate();
+        });
+
+        // CV viewer: shows images/resume.pdf whenever that file exists, stamping a watermark on each page.
+        const RESUME_PATH = 'images/resume.pdf';
+        const PDFJS_BASE = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/';
+        const WATERMARK_TEXT = 'JOY KAMAU  \u00b7  PORTFOLIO PREVIEW';
+        const resumeModal = document.getElementById('resumeModal');
+        const resumePages = document.getElementById('resumePages');
+        const resumeStatus = document.getElementById('resumeStatus');
+        const viewCvButton = document.getElementById('viewCvButton');
+        let pdfjsReady = null;
+        let resumeLoad = null;
+
+        function loadPdfJs() {
+            if (!pdfjsReady) {
+                pdfjsReady = new Promise((resolve, reject) => {
+                    const script = document.createElement('script');
+                    script.src = PDFJS_BASE + 'pdf.min.js';
+                    script.onload = () => {
+                        window.pdfjsLib.GlobalWorkerOptions.workerSrc = PDFJS_BASE + 'pdf.worker.min.js';
+                        resolve(window.pdfjsLib);
+                    };
+                    script.onerror = () => {
+                        pdfjsReady = null;
+                        reject(new Error('PDF viewer failed to load'));
+                    };
+                    document.head.appendChild(script);
+                });
+            }
+            return pdfjsReady;
+        }
+
+        function stampWatermark(ctx, width, height, scale) {
+            ctx.save();
+            ctx.font = `bold ${Math.round(14 * scale)}px Arial, sans-serif`;
+            ctx.fillStyle = 'rgba(120, 120, 120, 0.22)';
+            ctx.translate(width / 2, height / 2);
+            ctx.rotate(-28 * Math.PI / 180);
+            const stepX = ctx.measureText(WATERMARK_TEXT).width + 60 * scale;
+            const stepY = 90 * scale;
+            const span = Math.hypot(width, height) / 2;
+            for (let y = -span, row = 0; y < span; y += stepY, row++) {
+                for (let x = -span - stepX + (row % 2) * stepX / 2; x < span; x += stepX) {
+                    ctx.fillText(WATERMARK_TEXT, x, y);
+                }
+            }
+            ctx.restore();
+        }
+
+        async function renderResume() {
+            try {
+                const pdfjs = await loadPdfJs();
+                const pdf = await pdfjs.getDocument(RESUME_PATH).promise;
+                const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+                const cssWidth = Math.min(resumePages.clientWidth - 32, 900);
+                for (let n = 1; n <= pdf.numPages; n++) {
+                    const page = await pdf.getPage(n);
+                    const scale = (cssWidth / page.getViewport({ scale: 1 }).width) * pixelRatio;
+                    const viewport = page.getViewport({ scale });
+                    const canvas = document.createElement('canvas');
+                    canvas.width = viewport.width;
+                    canvas.height = viewport.height;
+                    canvas.style.width = `${cssWidth}px`;
+                    canvas.setAttribute('aria-label', `CV page ${n} of ${pdf.numPages}`);
+                    const ctx = canvas.getContext('2d');
+                    await page.render({ canvasContext: ctx, viewport }).promise;
+                    stampWatermark(ctx, canvas.width, canvas.height, scale);
+                    resumePages.appendChild(canvas);
+                }
+                resumeStatus.remove();
+            } catch (error) {
+                resumeStatus.textContent = 'My CV will be available here soon.';
+                resumeLoad = null; // retry next time, e.g. once the file has been uploaded
+            }
+        }
+
+        function openResume() {
+            resumeModal.classList.remove('hidden');
+            resumeModal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            resumeModal.querySelector('.cert-modal__close').focus();
+            if (!resumeLoad) {
+                resumeStatus.textContent = 'Loading CV...';
+                resumeLoad = renderResume();
+            }
+        }
+
+        function closeResume() {
+            resumeModal.classList.add('hidden');
+            resumeModal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+            viewCvButton.focus();
+        }
+
+        viewCvButton.addEventListener('click', openResume);
+        resumeModal.querySelectorAll('[data-resume-close]').forEach((el) => el.addEventListener('click', closeResume));
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && !resumeModal.classList.contains('hidden')) closeResume();
         });
 
         // Initialize Swiper for logo carousel
@@ -2176,8 +2454,41 @@
          const otherSectorField = document.getElementById('otherSectorField');
          const otherSectorInput = document.getElementById('otherSector');
          const contactForm = document.getElementById('contactForm');
-         const formSuccess = document.getElementById('formSuccess');
-         const formError = document.getElementById('formError');
+         const formToast = document.getElementById('formToast');
+         const toastIcon = formToast.querySelector('.form-toast__icon i');
+         const toastTitle = formToast.querySelector('.form-toast__title');
+         const toastText = formToast.querySelector('.form-toast__text');
+         const TOAST_ICONS = { success: 'fa-check', error: 'fa-xmark', warning: 'fa-exclamation' };
+         let toastTimer = null;
+
+         // variant: success | error | warning. body may be a string or a DOM node.
+         function showFormToast(variant, title, body, duration = 6000) {
+             clearTimeout(toastTimer);
+             formToast.classList.remove('is-visible');
+             void formToast.offsetWidth; // restart the pop animation if a toast is already showing
+             formToast.dataset.variant = variant;
+             formToast.style.setProperty('--toast-duration', `${duration}ms`);
+             toastIcon.className = `fa-solid ${TOAST_ICONS[variant]}`;
+             toastTitle.textContent = title;
+             toastText.replaceChildren(body);
+             formToast.setAttribute('aria-hidden', 'false');
+             formToast.classList.add('is-visible');
+             formToast.querySelector('.form-toast__close').focus({ preventScroll: true });
+             toastTimer = setTimeout(hideFormToast, duration);
+         }
+
+         function hideFormToast() {
+             clearTimeout(toastTimer);
+             formToast.classList.remove('is-visible');
+             formToast.setAttribute('aria-hidden', 'true');
+         }
+
+         formToast.addEventListener('click', (event) => {
+             if (event.target === formToast || event.target.closest('.form-toast__close')) hideFormToast();
+         });
+         document.addEventListener('keydown', (event) => {
+             if (event.key === 'Escape' && formToast.classList.contains('is-visible')) hideFormToast();
+         });
          
          // Show/hide other sector field
          sectorSelect.addEventListener('change', function() {
@@ -2291,18 +2602,17 @@
              
              // Simple validation
              if (name === '' || email === '' || message === '') {
-                 alert('Please fill in all required fields');
+                 showFormToast('warning', 'Almost there', 'Please fill in your name, email, and message.', 4000);
                  return;
              }
              
              if (countryInput.value === '') {
-                 alert('Please select your country');
-                 openCountries();
+                 showFormToast('warning', 'Almost there', 'Please select your country.', 4000);
                  return;
              }
 
              if (sector === 'other' && otherSector === '') {
-                 alert('Please specify the sector');
+                 showFormToast('warning', 'Almost there', 'Please tell me which sector you work in.', 4000);
                  return;
              }
              
@@ -2322,8 +2632,7 @@
                  website: contactForm.elements.website.value
              });
 
-             formSuccess.classList.add('hidden');
-             formError.classList.add('hidden');
+             hideFormToast();
              submitBtn.disabled = true;
              submitBtn.textContent = 'Sending...';
 
@@ -2332,14 +2641,22 @@
                  .then(res => res.json().then(data => ({ ok: res.ok, data })))
                  .then(({ ok, data }) => {
                      if (!ok || data.success !== true) throw new Error(data.message || 'Send failed');
-                     formSuccess.classList.remove('hidden');
+                     const firstName = name.split(/\s+/)[0];
+                     showFormToast('success', 'Message sent!', `Thank you, ${firstName}. Your message is on its way and I'll get back to you soon.`);
                      contactForm.reset();
                      resetCountry();
                      // Hide other sector field if visible
                      otherSectorField.classList.add('hidden');
                      otherSectorInput.required = false;
                  })
-                 .catch(() => formError.classList.remove('hidden'))
+                 .catch(() => {
+                     const body = document.createElement('span');
+                     const mail = document.createElement('a');
+                     mail.href = 'mailto:joykamau123@gmail.com';
+                     mail.textContent = 'joykamau123@gmail.com';
+                     body.append('Something went wrong. Please try again, or email me directly at ', mail, '.');
+                     showFormToast('error', 'Message not sent', body, 9000);
+                 })
                  .finally(() => {
                      submitBtn.disabled = false;
                      submitBtn.textContent = 'Send Message';
